@@ -58,7 +58,10 @@ en:
       nature: Type
       none: "(none)"
       personal_amount_label: Your share
-      personal_amount_divide: "÷"
+      personal_amount_type_label: Split type
+      personal_amount_type_exact: Exact amount
+      personal_amount_type_people: Number of people
+      personal_amount_people_label: Number of people
       personal_amount_hint: "Total: %{total} · Your share: %{share} (%{percent}%%)"
       note_label: Notes
       note_placeholder: Enter a note
