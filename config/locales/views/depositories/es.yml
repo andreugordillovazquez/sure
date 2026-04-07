@@ -11,6 +11,22 @@ es:
       interest_enabled: Habilitar cálculo automático de intereses
     new:
       title: Introducir saldo de la cuenta
+    subtypes:
+      checking:
+        short: Cuenta corriente
+        long: Cuenta corriente
+      savings:
+        short: Ahorros
+        long: Cuenta de ahorros
+      hsa:
+        short: HSA
+        long: Cuenta de ahorros para la salud (HSA)
+      cd:
+        short: Depósito
+        long: Certificado de depósito
+      money_market:
+        short: Monetario
+        long: Cuenta del mercado monetario
     tabs:
       overview:
         interest_rate: Tasa de interés

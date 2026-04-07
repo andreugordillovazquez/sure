@@ -36,7 +36,7 @@ class Crypto < ApplicationRecord
     end
 
     def display_name
-      "Crypto"
+      I18n.t("account_types.crypto", default: "Crypto")
     end
   end
 end

@@ -3,6 +3,16 @@ es:
   defaults:
     brand_name: "%{brand_name}"
     product_name: "%{product_name}"
+  account_types:
+    depository: "Efectivo"
+    investment: "Inversión"
+    credit_card: "Tarjetas de crédito"
+    loan: "Préstamos"
+    crypto: "Cripto"
+    property: "Propiedades"
+    vehicle: "Vehículos"
+    other_asset: "Otros activos"
+    other_liability: "Otros pasivos"
   global:
     expand: "Expandir"
   activerecord:

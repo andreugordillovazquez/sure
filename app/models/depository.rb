@@ -15,7 +15,7 @@ class Depository < ApplicationRecord
 
   class << self
     def display_name
-      "Cash"
+      I18n.t("account_types.depository", default: "Cash")
     end
 
     def color

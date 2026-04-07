@@ -3,6 +3,16 @@ en:
   defaults:
     brand_name: "%{brand_name}"
     product_name: "%{product_name}"
+  account_types:
+    depository: "Cash"
+    investment: "Investments"
+    credit_card: "Credit Cards"
+    loan: "Loans"
+    crypto: "Crypto"
+    property: "Properties"
+    vehicle: "Vehicles"
+    other_asset: "Other Assets"
+    other_liability: "Other Liabilities"
   global:
     expand: "Expand"
   activerecord:

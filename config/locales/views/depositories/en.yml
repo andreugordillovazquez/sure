@@ -11,6 +11,22 @@ en:
       interest_enabled: Enable automatic interest calculation
     new:
       title: Enter account balance
+    subtypes:
+      checking:
+        short: Checking
+        long: Checking
+      savings:
+        short: Savings
+        long: Savings
+      hsa:
+        short: HSA
+        long: Health Savings Account
+      cd:
+        short: CD
+        long: Certificate of Deposit
+      money_market:
+        short: MM
+        long: Money Market
     tabs:
       overview:
         interest_rate: Interest Rate
