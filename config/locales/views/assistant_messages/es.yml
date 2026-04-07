@@ -1,0 +1,7 @@
+---
+es:
+  assistant_messages:
+    tool_calls:
+      title: Llamadas a herramientas
+      function: "Función:"
+      arguments: "Argumentos:"

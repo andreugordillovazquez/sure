@@ -43,8 +43,9 @@ en:
       one_time_title: One-time %{type}
       one_time_description: One-time transactions will be excluded from certain budgeting calculations and reports to help you see what's really important.
       convert_to_trade_title: Convert to Security Trade
-      convert_to_trade_description: Convert this transaction into a Buy or Sell trade with security details for portfolio tracking.
+      convert_to_trade_description: Convert this transaction into a security trade (buy/sell) by providing ticker, shares, and price.
       convert_to_trade_button: Convert to Trade
+      convert_button: Convert
       pending_duplicate_merger_title: Duplicate of Posted Transaction?
       pending_duplicate_merger_description: Manually merge this pending transaction with its posted version.
       pending_duplicate_merger_button: Open merger
@@ -62,6 +63,16 @@ en:
       tab_transactions: Transactions
       tab_upcoming: Upcoming
       uncategorized: "(uncategorized)"
+      expense: Expense
+      income: Income
+      additional_details: Additional details
+      payee: Payee
+      description: Description
+      memo: Memo
+      provider_extras: Provider extras
+      transfer_or_payment_title: Transfer or Debt Payment?
+      transfer_or_payment_description: Transfers and payments are special types of transactions that indicate money movement between 2 accounts.
+      open_matcher: Open matcher
     activity_labels:
       buy: Buy
       sell: Sell
@@ -124,9 +135,17 @@ en:
       edit_tags: Edit tags
       import: Import
     index:
+      page_title: Transactions
+      new_rule: New rule
+      edit_rules: Edit rules
+      edit_categories: Edit categories
+      edit_tags: Edit tags
+      edit_merchants: Edit merchants
+      edit_imports: Edit imports
+      import: Import
+      new_transaction: New transaction
       transaction: transaction
       transactions: transactions
-      import: Import
       categorize_button:
         one: "Categorize (1)"
         other: "Categorize (%{count})"
@@ -260,7 +279,25 @@ en:
         greater_than: greater than
         less_than: less than
       form:
+        search_placeholder: "Search transactions ..."
+        filter: Filter
         toggle_selection_checkboxes: Toggle all checkboxes
+    bulk_updates:
+      new:
+        edit_transactions: Edit transactions
+        overview: Overview
+        date: Date
+        transactions: Transactions
+        category: Category
+        select_category: Select a category
+        merchant: Merchant
+        select_merchant: Select a merchant
+        tags: Tags
+        none: None
+        notes: Notes
+        notes_placeholder: Enter a note that will be applied to selected transactions
+        cancel: Cancel
+        save: Save
     attachments:
       cannot_exceed: "Cannot exceed %{count} attachments per transaction"
       uploaded_one: "Attachment uploaded successfully"

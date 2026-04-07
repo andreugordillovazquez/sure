@@ -1,0 +1,6 @@
+---
+en:
+  layouts:
+    shared:
+      confirm_dialog:
+        confirm: Confirm

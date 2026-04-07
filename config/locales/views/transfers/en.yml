@@ -25,6 +25,8 @@ en:
       details: Details
       note_label: Notes
       note_placeholder: Add a note to this transfer
+      category: Category
+      uncategorized: Uncategorized
       overview: Overview
       settings: Settings
     update:

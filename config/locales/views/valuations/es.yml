@@ -1,6 +1,12 @@
 ---
 es:
   valuations:
+    confirm_create:
+      confirm: Confirmar
+      title: Confirmar nuevo saldo
+    confirm_update:
+      title: Actualizar saldo
+      update: Actualizar
     form:
       amount: Importe
       submit: Añadir actualización de saldo
@@ -16,6 +22,7 @@ es:
     new:
       title: Nuevo saldo
     show:
+      account_value_on_date: Valor de la cuenta en la fecha
       amount: Importe
       date_label: Fecha
       delete: Eliminar
@@ -28,3 +35,4 @@ es:
       note_placeholder: Añade cualquier detalle adicional sobre esta entrada
       overview: Resumen
       settings: Configuración
+      update_value: Actualizar valor

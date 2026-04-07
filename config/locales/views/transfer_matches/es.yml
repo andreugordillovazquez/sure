@@ -1,0 +1,20 @@
+---
+es:
+  transfer_matches:
+    matching_fields:
+      create_new: Crear nueva transacción
+      match_existing: Vincular transacción existente (recomendado)
+      matching_method: Método de vinculación
+      matching_transaction: Transacción correspondiente
+      no_matches_found: No encontramos transacciones coincidentes en tus otras cuentas. Selecciona una cuenta y crearemos una nueva transacción de entrada para ti.
+      select_method: Selecciona un método para vincular tus transacciones.
+      target_account: Cuenta destino
+    new:
+      from_account: Desde cuenta
+      from_account_name: "Desde cuenta: %{name}"
+      inflow_transaction: Transacción de entrada
+      outflow_transaction: Transacción de salida
+      submit: Crear vinculación de transferencia
+      title: Vincular transferencia o pago
+      to_account: Hacia cuenta
+      to_account_name: "Hacia cuenta: %{name}"

@@ -3,3 +3,28 @@ es:
   chats:
     demo_banner_title: "Modo de demostración activo"
     demo_banner_message: "Estás utilizando un LLM Qwen3 de pesos abiertos con créditos proporcionados por Cloudflare Workers AI. Los resultados pueden variar, ya que la base de código se probó principalmente con `gpt-4.1`, ¡pero tus tokens no se enviarán a ningún otro lugar para ser entrenados! 🤖"
+    index:
+      page_title: Chats
+      new_chat: Nuevo chat
+    chat_nav:
+      all_chats: Todos los chats
+      start_new_chat: Iniciar nuevo chat
+      edit_title: Editar título del chat
+      delete_chat: Eliminar chat
+    chat:
+      edit_title: Editar título del chat
+      delete_chat: Eliminar chat
+    ai_consent:
+      title: Habilitar chats con IA
+      description_available: El chat con IA puede responder preguntas financieras y proporcionar información basada en tus datos. Para usar esta función, necesitas habilitarla explícitamente.
+      description_unavailable_html: 'Para usar el asistente de IA, necesitas configurar la variable de entorno <code class="bg-surface-inset px-1 py-0.5 rounded font-mono text-xs">OPENAI_ACCESS_TOKEN</code> o configurarla en los ajustes de autoalojamiento de tu instancia.'
+      enable_button: Habilitar chats con IA
+      disclaimer: Desactívalo en cualquier momento. Todos los datos enviados a nuestros proveedores de LLM son anonimizados.
+    error:
+      failed_message: Error al generar la respuesta. Por favor, inténtalo de nuevo.
+      retry: Reintentar
+    ai_greeting:
+      intro: "Aquí tienes algunas preguntas que puedes hacer:"
+      suggestion_1: Evaluar cartera de inversiones
+      suggestion_2: Mostrar información de gastos
+      suggestion_3: Encontrar patrones inusuales

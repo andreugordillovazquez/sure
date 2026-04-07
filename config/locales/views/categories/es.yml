@@ -13,7 +13,10 @@ es:
     edit:
       edit: Editar categoría
     form:
+      name_label: Nombre
+      parent_category_optional: Categoría padre (opcional)
       placeholder: Nombre de la categoría
+      unassigned: "(sin asignar)"
     index:
       bootstrap: Usar predeterminadas (recomendado)
       categories: Categorías

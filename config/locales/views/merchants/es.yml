@@ -34,6 +34,9 @@ es:
         merchant: Comercio
         actions: Acciones
         source: Origen
+    family_merchant:
+      edit: Editar
+      delete: Eliminar
     merchant:
       confirm_accept: Eliminar comercio
       confirm_body: ¿Estás seguro de que deseas eliminar este comercio? Eliminar este comercio 

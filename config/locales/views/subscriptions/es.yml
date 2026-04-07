@@ -12,3 +12,5 @@ es:
       redirect_to_stripe: "En el siguiente paso, serás redirigido a Stripe, que gestiona las tarjetas de crédito por nosotros."
       trialing: "Tus datos se eliminarán en %{days} días"
       trial_over: "Tu período de prueba ha terminado"
+      account_settings: Ajustes de cuenta
+      sign_out: Cerrar sesión

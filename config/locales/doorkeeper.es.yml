@@ -1,0 +1,6 @@
+---
+es:
+  doorkeeper:
+    authorizations:
+      error:
+        go_back: Volver

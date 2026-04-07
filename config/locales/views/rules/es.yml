@@ -5,6 +5,31 @@ es:
     no_condition: Sin condición
     actions:
       value_placeholder: Introduce un valor
+    index:
+      page_title: "Reglas"
+      delete_all: "Eliminar todas las reglas"
+      new_rule: "Nueva regla"
+      toggle_sort: "Cambiar orden"
+    rule:
+      edit: "Editar"
+      reapply: "Reaplicar regla"
+      delete: "Eliminar"
+    new:
+      back_to_rules: "Volver a reglas"
+      title: "Nueva regla de %{resource_type}"
+    edit:
+      back_to_rules: "Volver a reglas"
+      title: "Editar regla de %{resource_type}"
+      title_with_name: "Editar regla de %{resource_type} \"%{name}\""
+    form:
+      name_placeholder: "Introduce un nombre para esta regla"
+      add_condition: "Añadir condición"
+      add_condition_group: "Añadir grupo de condiciones"
+      add_action: "Añadir acción"
+    confirm:
+      confirm_changes_to: "Confirmar cambios en \"%{name}\""
+      confirm_changes: "Confirmar cambios"
+      view_usage: "Ver historial de uso"
     apply_all:
       button: Aplicar todas
       confirm_title: Aplicar todas las reglas

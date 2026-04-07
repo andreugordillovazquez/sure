@@ -12,4 +12,5 @@ en:
           entities.  Instead of leaving them untagged, you can also assign a new tag
           below."
         replacement_tag_prompt: Select tag
+        delete_and_reassign: Delete and reassign
         tag: Tag

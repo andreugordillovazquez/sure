@@ -36,6 +36,8 @@ es:
       shares: "%{qty} acciones"
       unknown: "--"
       no_cost_basis: Sin base de costes
+    new:
+      coming_soon: "Próximamente..."
     index:
       average_cost: Costo promedio
       holdings: Posiciones

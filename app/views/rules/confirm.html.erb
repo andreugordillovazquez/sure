@@ -1,9 +1,9 @@
 <%= render DS::Dialog.new(reload_on_close: params[:reload_on_close].present?) do |dialog| %>
   <%
     title = if @rule.name.present?
-              "Confirm changes to \"#{@rule.name}\""
+              t(".confirm_changes_to", name: @rule.name)
             else
-              "Confirm changes"
+              t(".confirm_changes")
             end
   %>
   <% dialog.with_header(title: title) %>
@@ -39,7 +39,7 @@
               </p>
             <% end %>
             <p class="text-blue-600 mt-1">
-              <%= link_to "View usage history", settings_llm_usage_path, class: "underline hover:text-blue-800" %>
+              <%= link_to t(".view_usage"), settings_llm_usage_path, class: "underline hover:text-blue-800" %>
             </p>
           </div>
         </div>
@@ -47,7 +47,7 @@
     <% end %>
 
     <%= render DS::Button.new(
-      text: "Confirm changes",
+      text: t(".confirm_changes"),
       href: apply_rule_path(@rule),
       method: :post,
       full_width: true,

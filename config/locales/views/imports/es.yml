@@ -30,6 +30,7 @@ es:
         description: Edita tus datos en la tabla de abajo. Las celdas rojas son inválidas.
         errors_notice: Tienes errores en tus datos. Pasa el ratón sobre el error para ver los detalles.
         errors_notice_mobile: Tienes errores en tus datos. Toca el tooltip del error para ver los detalles.
+        next_step: Siguiente paso
         title: Limpia tus datos
     configurations:
       update:
@@ -38,20 +39,95 @@ es:
         button_label: Continuar
         description: Sube un archivo CSV sencillo (como el que generamos al exportar tus datos). Mapearemos las columnas automáticamente.
         instructions: Selecciona continuar para analizar tu CSV y pasar al paso de limpieza.
+      account_import:
+        apply_configuration: Aplicar configuración
+        balance: Saldo
+        balance_date: Fecha del saldo
+        currency: Moneda
+        date_format: Formato de fecha
+        default: Predeterminado
+        entity_type: Tipo de entidad
+        leave_empty: Dejar vacío
+        name: Nombre
+        select_format: Seleccionar formato
       mint_import:
+        account_optional: Cuenta (opcional)
+        amount: Importe
+        apply_configuration: Aplicar configuración
+        category_optional: Categoría (opcional)
+        currency: Moneda
+        date: Fecha
         date_format_label: Formato de fecha
+        format: Formato
+        incomes_negative: Los ingresos son negativos
+        incomes_positive: Los ingresos son positivos
+        leave_empty: Dejar vacío
+        name_optional: Nombre (opcional)
+        preconfigured_notice: Hemos preconfigurado tu importación de Mint. Por favor, continúa al siguiente paso.
+        select_format: Seleccionar formato
+        tags_optional: Etiquetas (opcional)
       rule_import:
         description: Configura tu importación de reglas. Las reglas se crearán o actualizarán basándose en los datos del CSV.
         process_button: Procesar reglas
         process_help: Haz clic en el botón de abajo para procesar tu CSV y generar las filas de reglas.
       show:
+        apply_template: Aplicar plantilla
         description: Selecciona las columnas que corresponden a cada campo en tu CSV.
+        manually_configure: Configurar manualmente
+        template_found: Configuración de plantilla encontrada
+        template_found_description: Encontramos una configuración de una importación anterior para esta cuenta. ¿Te gustaría aplicarla a esta importación?
         title: Configura tu importación
       trade_import:
+        account: Cuenta
+        apply_configuration: Aplicar configuración
+        buys_negative: Compras son cantidad negativa
+        buys_positive: Compras son cantidad positiva
+        currency: Moneda
+        date: Fecha
         date_format_label: Formato de fecha
+        default: Predeterminado
+        format: Formato
+        leave_empty: Dejar vacío
+        name: Nombre
+        note: "Nota:"
+        price: Precio
+        quantity: Cantidad
+        security_provider_warning: El proveedor de precios de valores no está configurado. Tus importaciones de operaciones funcionarán, pero Sure no rellenará el historial de precios. Ve a la configuración para configurarlo.
+        select_column: Seleccionar columna
+        select_format: Seleccionar formato
+        stock_exchange_code: Código de bolsa de valores
+        ticker: Ticker
       transaction_import:
+        account: Cuenta
+        amount: Importe
+        amount_type: Tipo de importe
+        amount_type_strategy: Estrategia de tipo de importe
+        apply_configuration: Aplicar configuración
+        as_amount_type_column: como columna de tipo de importe
+        as_identifier_value: como valor identificador
+        category: Categoría
+        currency: Moneda
+        date: Fecha
         date_format_label: Formato de fecha
+        default: Predeterminado
+        expense_outflow: Gasto (salida)
+        format: Formato
+        income_inflow: Ingreso (entrada)
+        incomes_negative: Los ingresos son negativos
+        incomes_positive: Los ingresos son positivos
+        leave_empty: Dejar vacío
+        name: Nombre
+        notes: Notas
         rows_to_skip_label: Omitir las primeras n filas
+        select_column: Seleccionar columna
+        select_convention: Seleccionar convención
+        select_format: Seleccionar formato
+        select_strategy: Seleccionar estrategia
+        select_type: Seleccionar tipo
+        select_value: Seleccionar valor
+        set: Establecer
+        tags: Etiquetas
+        treat_as_html: "Tratar \"%{value}\" como"
     confirms:
       sure_import:
         title: Confirma tu importación
@@ -63,6 +139,7 @@ es:
       mappings:
         create_account: Crear cuenta
         csv_mapping_label: "%{mapping} en CSV"
+        next: Siguiente
         sure_mapping_label: "%{mapping} en %{product_name}"
         no_accounts: Aún no tienes cuentas. Por favor, crea una cuenta que podamos usar para las filas (sin asignar) en tu CSV o vuelve al paso de Limpieza y proporciona un nombre de cuenta que podamos usar.
         rows_label: Filas
@@ -78,7 +155,14 @@ es:
         tag_mapping_title: Asigna tus etiquetas
     uploads:
       show:
+        account_optional: Cuenta (opcional)
+        copy_paste: Copiar y pegar
+        drop_csv_subtitle: Tu archivo se subirá automáticamente
+        drop_csv_title: Arrastra el CSV para subirlo
+        multi_account_import: Importación multicuenta
+        paste_placeholder: Pega el contenido de tu archivo CSV aquí
         qif_title: Subir archivo QIF
+        upload_csv: Subir CSV
         qif_description: Selecciona la cuenta a la que pertenece este archivo QIF y sube tu exportación .qif desde Quicken.
         qif_account_label: Cuenta
         qif_account_placeholder: Seleccionar una cuenta…
@@ -105,6 +189,23 @@ es:
         hint_html: "Sube el archivo **all.ndjson** de tu ZIP de exportación de datos"
         ndjson_invalid: Debe ser un NDJSON válido con al menos un registro
   imports:
+    failure:
+      description: Por favor, comprueba el formato de tu archivo, busca errores y verifica que todos los campos obligatorios estén completos, luego vuelve e inténtalo de nuevo.
+      title: Importación fallida
+      try_again: Reintentar
+    importing:
+      back_to_dashboard: Volver al panel
+      check_status: Comprobar estado
+      description: Tu importación está en curso. Consulta el menú de importaciones para ver el estado o haz clic en 'Comprobar estado' para actualizar la página. Puedes seguir usando la aplicación.
+      title: Importación en curso
+    revert_failure:
+      description: Por favor, inténtalo de nuevo
+      title: Error al revertir la importación
+      try_again: Reintentar
+    success:
+      back_to_dashboard: Volver al panel
+      description: Tus datos importados se han añadido correctamente a la aplicación y están listos para usar.
+      title: Importación exitosa
     type_labels:
       transaction_import: Importación de transacciones
       trade_import: Importación de operaciones

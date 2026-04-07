@@ -14,6 +14,8 @@ en:
       success: Entry updated
     unlock:
       success: Entry unlocked. It may be updated on next sync.
+    selection_bar:
+      edit: Edit
     protection:
       tooltip: Protected from sync
       title: Protected from sync

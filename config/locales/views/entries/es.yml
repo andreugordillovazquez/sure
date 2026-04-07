@@ -14,6 +14,8 @@ es:
       success: Entrada actualizada
     unlock:
       success: Entrada desbloqueada. Podría actualizarse en la próxima sincronización.
+    selection_bar:
+      edit: Editar
     protection:
       tooltip: Protegido contra sincronización
       title: Protegido contra sincronización

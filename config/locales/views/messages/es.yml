@@ -1,0 +1,7 @@
+---
+es:
+  messages:
+    chat_form:
+      placeholder: "Pregunta lo que quieras..."
+      coming_soon: Próximamente
+      disclaimer: Las respuestas de la IA son solo informativas y no constituyen asesoramiento financiero.

@@ -1,6 +1,12 @@
 ---
 es:
   users:
+    user_menu:
+      settings: Ajustes
+      changelog: Novedades
+      feedback: Comentarios
+      contact: Contacto
+      log_out: Cerrar sesión
     destroy:
       success: Tu cuenta ha sido eliminada.
     update:

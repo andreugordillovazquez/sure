@@ -75,7 +75,7 @@
                     ["United Kingdom (GB)", "GB"]
                   ], enable_banking_item.country_code),
                   { label: true, include_blank: "Select country..." },
-                  { label: "Country", class: "form-field__input" } %>
+                  { label: t("settings.providers.enable_banking_panel.country_label"), class: "form-field__input" } %>
 
     <% if has_authenticated_connections && !is_new_record %>
       <div class="p-3 rounded-md bg-warning/10 text-warning text-sm">
@@ -85,20 +85,20 @@
     <% end %>
 
     <%= form.text_field :application_id,
-                        label: "Application ID",
+                        label: t("settings.providers.enable_banking_panel.application_id_label"),
                         placeholder: is_new_record ? "Enter application ID" : "Enter new ID to update",
                         value: enable_banking_item.application_id,
                         disabled: has_authenticated_connections && !is_new_record %>
 
     <%= form.text_area :client_certificate,
-                        label: "Client Certificate (with Private Key)",
+                        label: t("settings.providers.enable_banking_panel.client_certificate_label"),
                         placeholder: "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----",
                         rows: 6,
                         class: "form-field__input font-mono text-xs",
                         disabled: has_authenticated_connections && !is_new_record %>
 
     <div class="flex justify-end">
-      <%= form.submit is_new_record ? "Save Configuration" : "Update Configuration",
+      <%= form.submit is_new_record ? t("settings.providers.save_configuration") : t("settings.providers.update_configuration"),
                       class: "inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-gray-800" %>
     </div>
   <% end %>
@@ -176,7 +176,7 @@
             <%= button_to enable_banking_item_path(item),
                           method: :delete,
                           class: "inline-flex items-center justify-center rounded-lg px-3 py-1.5 text-xs font-medium text-destructive hover:bg-destructive/10 transition-colors",
-                          data: { turbo_confirm: "Are you sure you want to remove this connection?" } do %>
+                          data: { turbo_confirm: t("settings.providers.enable_banking_panel.remove_confirm") } do %>
               Remove
             <% end %>
           </div>

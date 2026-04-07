@@ -45,5 +45,40 @@ en:
       description: Select the bank you want to connect to your accounts.
       no_banks: No banks available for this country/region.
       title: Select Your Bank
+    setup_accounts:
+      title: Set Up Your Enable Banking Accounts
+      subtitle: Choose the correct account types for your imported accounts
+      choose_account_type: "Choose the correct account type for each Enable Banking account:"
+      historical_data_range: "Historical Data Range:"
+      sync_start_date_label: "Start syncing transactions from:"
+      sync_start_date_help: Select how far back you want to sync transaction history. Maximum 1 year of history available.
+      creating_accounts: Creating Accounts...
+      balance: Balance
+      account_type_label: "Account Type:"
+      create_accounts: Create Accounts
+      cancel: Cancel
+    select_existing_account:
+      title: Link Enable Banking account
+      all_accounts_already_linked: All Enable Banking accounts appear to be linked already.
+      wait_for_sync: If you just connected or synced, try again after the sync completes.
+      unlink_to_move: To link a different account, first unlink it from the account's actions menu.
+      balance: Balance
+      link: Link
+      cancel: Cancel
+    enable_banking_item:
+      delete: Delete
+      setup_accounts: Set up accounts
+      deletion_in_progress: Deletion in progress
+      syncing: Syncing...
+      reconnect: Reconnect
+      status: "Last synced %{timestamp} ago"
+      status_never: Never synced
+      setup_needed: Setup needed
+      setup_description:
+        one: "%{count} account imported from Enable Banking needs to be set up"
+        other: "%{count} accounts imported from Enable Banking need to be set up"
+      no_accounts_title: No accounts found
+      no_accounts_description: No accounts were found from Enable Banking. Try syncing again.
+      update: Update
     update:
       success: Enable Banking configuration updated.

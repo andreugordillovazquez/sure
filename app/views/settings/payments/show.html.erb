@@ -39,7 +39,7 @@
 
       <% if @family.has_active_subscription? %>
         <%= render DS::Link.new(
-          text: "Manage",
+          text: t(".manage"),
           icon: "external-link",
           variant: "primary",
           icon_position: "right",
@@ -48,7 +48,7 @@
         ) %>
       <% else %>
         <%= render DS::Link.new(
-          text: "Choose level",
+          text: t(".choose_level"),
           variant: "primary",
           icon: "plus",
           icon_position: "right",

@@ -1,8 +1,30 @@
 ---
 es:
   properties:
+    address:
+      address_line1: Línea de dirección 1
+      address_line1_placeholder: Calle Principal 123
+      city: Ciudad
+      city_placeholder: Madrid
+      country: País
+      country_placeholder: España
+      edit_address: Editar dirección de la propiedad
+      postal_code: Código postal
+      postal_code_placeholder: '28001'
+      save: Guardar
+      state_region: Estado/Región
+      state_region_placeholder: Madrid
+    balances:
+      edit_value: Editar valor de la propiedad
+      estimated_market_value: Valor de mercado estimado
+      estimated_market_value_tooltip: El valor de mercado estimado de tu propiedad. Este número se puede encontrar en sitios como Idealista o Fotocasa, y nunca es un número exacto.
+      next: Siguiente
+      save: Guardar
     edit:
       edit: Editar %{account}
+      edit_property: Editar propiedad
+      next: Siguiente
+      save: Guardar
     form:
       address_line1: Dirección
       address_line1_placeholder: Calle Principal 123
@@ -21,9 +43,16 @@ es:
       subtype_prompt: Seleccione el tipo de propiedad
       year_built: Año de construcción
       year_built_placeholder: '2000'
+    form_tabs:
+      address: Dirección
+      overview: Resumen
+      value: Valor
     new:
+      enter_property_manually: Introducir propiedad manualmente
+      next: Siguiente
       title: Introduzca los detalles de la propiedad
     overview:
+      edit_account_details: Editar detalles de la cuenta
       living_area: Área Habitable
       market_value: Valor de Mercado
       purchase_price: Precio de Compra

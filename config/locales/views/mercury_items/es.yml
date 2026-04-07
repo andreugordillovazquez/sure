@@ -143,5 +143,30 @@ es:
       success: "Se han creado %{count} cuenta(s) con éxito."
     sync:
       success: Sincronización iniciada
+    api_error:
+      title: Error de conexión con Mercury
+      unable_to_connect: No se puede conectar con Mercury
+      common_issues: "Problemas comunes:"
+      invalid_api_token: Token de API no válido
+      invalid_api_token_hint: Comprueba tu token de API en los Ajustes del Proveedor
+      expired_credentials: Credenciales caducadas
+      expired_credentials_hint: Genera un nuevo token de API desde Mercury
+      insufficient_permissions: Permisos insuficientes
+      insufficient_permissions_hint: Asegúrate de que tu token tiene acceso de solo lectura
+      network_issue: Problema de red
+      network_issue_hint: Comprueba tu conexión a Internet
+      service_down: Servicio no disponible
+      service_down_hint: La API de Mercury puede estar temporalmente no disponible
+      check_provider_settings: Comprobar ajustes del proveedor
+    setup_required:
+      title: Configuración de Mercury necesaria
+      api_token_not_configured: Token de API no configurado
+      configure_api_token: Antes de vincular cuentas de Mercury, necesitas configurar tu token de API de Mercury.
+      setup_steps: "Pasos de configuración:"
+      step_1: "Ve a <strong>Ajustes > Proveedores</strong>"
+      step_2: "Busca la sección de <strong>Mercury</strong>"
+      step_3: Introduce tu token de API de Mercury
+      step_4: Vuelve aquí para vincular tus cuentas
+      go_to_provider_settings: Ir a ajustes del proveedor
     update:
       success: Conexión con Mercury actualizada

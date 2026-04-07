@@ -3,6 +3,30 @@ es:
   pages:
     changelog:
       title: Novedades
+      no_release_notes: Sin notas de la versión disponibles
+      date_unavailable: Fecha no disponible
+    feedback:
+      title: Comentarios
+      heading: Deja tus comentarios
+      description: Haznos saber si tienes algún comentario específico. No dudes en incluir enlaces a vídeos o capturas de pantalla.
+      feature_request: Escribir una solicitud de funcionalidad
+      bug_report: Reportar un error
+      discuss: "Hablar de %{product_name} con otros"
+    intro:
+      welcome: "¡Bienvenido!"
+      coming_soon_heading: Experiencia de introducción próximamente
+      coming_soon_description: "Estamos creando una experiencia de bienvenida más completa para conocer tus objetivos, hitos y necesidades del día a día. Por ahora, ve a la barra lateral del chat para iniciar una conversación con Sure y contarnos dónde te encuentras en tu camino financiero."
+      start_chatting: Empezar a chatear
+    redis_configuration_error:
+      page_title: Configuración de Redis necesaria - Sure
+      title: Configuración de Redis necesaria
+      subtitle: Tu instalación autoalojada de Sure necesita que Redis esté correctamente configurado.
+      why_redis: ¿Por qué se necesita Redis?
+      why_redis_explanation: Sure utiliza Redis para ejecutar los trabajos en segundo plano de Sidekiq, como la sincronización de datos de cuentas, el procesamiento de importaciones y otras operaciones que mantienen tus datos financieros actualizados.
+      view_setup_guide: Ver guía de configuración
+      setup_guide_hint: Sigue nuestra guía completa de configuración con Docker para configurar Redis
+      refresh_hint: Una vez que hayas configurado Redis, actualiza esta página para continuar.
+      refresh_page: Actualizar página
     privacy:
       title: Política de privacidad
       heading: Política de privacidad

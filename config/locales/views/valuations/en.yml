@@ -1,6 +1,12 @@
 ---
 en:
   valuations:
+    confirm_create:
+      confirm: Confirm
+      title: Confirm new balance
+    confirm_update:
+      title: Update balance
+      update: Update
     form:
       amount: Amount
       submit: Add balance update
@@ -16,6 +22,7 @@ en:
     new:
       title: New balance
     show:
+      account_value_on_date: Account value on date
       amount: Amount
       date_label: Date
       delete: Delete
@@ -28,3 +35,4 @@ en:
       note_placeholder: Add any additional details about this entry
       overview: Overview
       settings: Settings
+      update_value: Update value

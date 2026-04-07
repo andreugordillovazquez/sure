@@ -45,17 +45,17 @@
                        data: { turbo: true },
                        class: "space-y-3" do |form| %>
     <%= form.text_field :token,
-                        label: "Token",
+                        label: t("settings.providers.mercury_panel.token_label"),
                         placeholder: is_new_record ? "Paste token here" : "Enter new token to update",
                         type: :password %>
 
     <%= form.text_field :base_url,
-                        label: "Base Url (Optional)",
+                        label: t("settings.providers.mercury_panel.base_url_label"),
                         placeholder: "https://api.mercury.com/api/v1 (default)",
                         value: mercury_item.base_url %>
 
     <div class="flex justify-end">
-      <%= form.submit is_new_record ? "Save Configuration" : "Update Configuration",
+      <%= form.submit is_new_record ? t("settings.providers.save_configuration") : t("settings.providers.update_configuration"),
                       class: "inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 transition-colors" %>
     </div>
   <% end %>

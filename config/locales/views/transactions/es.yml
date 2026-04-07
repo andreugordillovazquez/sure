@@ -41,7 +41,7 @@ es:
       one_time_title: Transacción puntual %{type}
       one_time_description: Las transacciones puntuales se excluirán de ciertos cálculos de presupuesto e informes para ayudarte a ver lo que es realmente importante.
       convert_to_trade_title: Convertir en operación de valores
-      convert_to_trade_description: Convierte esta transacción en una operación de compra o venta con detalles del valor para el seguimiento de la cartera.
+      convert_to_trade_description: Convierte esta transacción en una operación de valores (compra/venta) proporcionando ticker, acciones y precio.
       convert_to_trade_button: Convertir en operación
       merchant_label: Comerciante
       name_label: Nombre
@@ -61,6 +61,17 @@ es:
       tab_transactions: Transacciones
       tab_upcoming: Próximas
       uncategorized: "(sin categorizar)"
+      expense: Gasto
+      income: Ingreso
+      additional_details: Detalles adicionales
+      payee: Beneficiario
+      description: Descripción
+      memo: Nota
+      provider_extras: Datos del proveedor
+      transfer_or_payment_title: "¿Transferencia o pago de deuda?"
+      transfer_or_payment_description: Las transferencias y los pagos son tipos especiales de transacciones que indican el movimiento de dinero entre 2 cuentas.
+      open_matcher: Abrir emparejador
+      convert_button: Convertir
     activity_labels:
       buy: Compra
       sell: Venta
@@ -125,9 +136,17 @@ es:
       edit_tags: Editar etiquetas
       import: Importar
     index:
+      page_title: Transacciones
+      new_rule: Nueva regla
+      edit_rules: Editar reglas
+      edit_categories: Editar categorías
+      edit_tags: Editar etiquetas
+      edit_merchants: Editar comercios
+      edit_imports: Editar importaciones
+      import: Importar
+      new_transaction: Nueva transacción
       transaction: transacción
       transactions: transacciones
-      import: Importar
       categorize_button:
         one: "Categorizar (1)"
         other: "Categorizar (%{count})"
@@ -261,7 +280,25 @@ es:
         greater_than: mayor que
         less_than: menor que
       form:
+        search_placeholder: "Buscar transacciones..."
+        filter: Filtrar
         toggle_selection_checkboxes: Alternar todas las casillas
+    bulk_updates:
+      new:
+        edit_transactions: Editar transacciones
+        overview: Resumen
+        date: Fecha
+        transactions: Transacciones
+        category: Categoría
+        select_category: Selecciona una categoría
+        merchant: Comercio
+        select_merchant: Selecciona un comercio
+        tags: Etiquetas
+        none: Ninguna
+        notes: Notas
+        notes_placeholder: Introduce una nota que se aplicará a las transacciones seleccionadas
+        cancel: Cancelar
+        save: Guardar
     attachments:
       cannot_exceed: "No se pueden exceder %{count} adjuntos por transacción"
       uploaded_one: Adjunto subido correctamente

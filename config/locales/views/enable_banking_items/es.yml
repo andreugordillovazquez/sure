@@ -45,5 +45,40 @@ es:
       description: Selecciona el banco que quieres conectar a tus cuentas.
       no_banks: No hay bancos disponibles para este país/región.
       title: Selecciona tu banco
+    setup_accounts:
+      title: Configurar cuentas de Enable Banking
+      subtitle: Elige los tipos de cuenta correctos para tus cuentas importadas
+      choose_account_type: "Elige el tipo de cuenta correcto para cada cuenta de Enable Banking:"
+      historical_data_range: "Rango de datos históricos:"
+      sync_start_date_label: "Empezar a sincronizar transacciones desde:"
+      sync_start_date_help: Selecciona cuánto tiempo atrás deseas sincronizar el historial de transacciones. Máximo 1 año de historial disponible.
+      creating_accounts: Creando cuentas...
+      balance: Saldo
+      account_type_label: "Tipo de cuenta:"
+      create_accounts: Crear cuentas
+      cancel: Cancelar
+    select_existing_account:
+      title: Vincular cuenta de Enable Banking
+      all_accounts_already_linked: Todas las cuentas de Enable Banking ya están vinculadas.
+      wait_for_sync: Si acabas de conectar o sincronizar, inténtalo de nuevo cuando finalice la sincronización.
+      unlink_to_move: Para vincular una cuenta diferente, primero desvincúlala desde el menú de acciones de la cuenta.
+      balance: Saldo
+      link: Vincular
+      cancel: Cancelar
+    enable_banking_item:
+      delete: Eliminar
+      setup_accounts: Configurar cuentas
+      deletion_in_progress: Eliminación en curso
+      syncing: Sincronizando...
+      reconnect: Reconectar
+      status: "Última sincronización hace %{timestamp}"
+      status_never: Nunca sincronizado
+      setup_needed: Configuración necesaria
+      setup_description:
+        one: "%{count} cuenta importada de Enable Banking necesita ser configurada"
+        other: "%{count} cuentas importadas de Enable Banking necesitan ser configuradas"
+      no_accounts_title: No se encontraron cuentas
+      no_accounts_description: No se encontraron cuentas de Enable Banking. Intenta sincronizar de nuevo.
+      update: Actualizar
     update:
       success: Configuración de Enable Banking actualizada.

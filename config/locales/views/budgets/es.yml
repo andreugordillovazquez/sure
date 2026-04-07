@@ -4,10 +4,25 @@ es:
     name:
       custom_range: "%{start} - %{end_date}"
       month_year: "%{month}"
+    edit:
+      title: "Configura tu presupuesto"
+      budgeted_spending: "Gasto presupuestado"
+      expected_income: "Ingreso esperado"
+      continue: "Continuar"
     show:
+      edit: "Editar"
       tabs:
         actual: Real
         budgeted: Presupuestado
+    budget_donut:
+      new_budget: "Nuevo presupuesto"
+    budget_header:
+      today: "Hoy"
+    budget_nav:
+      setup: "Configuración"
+      categories: "Categorías"
+    over_allocation_warning:
+      fix_allocations: "Corregir asignaciones"
     copy_previous_prompt:
       title: "Configura tu presupuesto"
       description: "Puedes copiar tu presupuesto de %{source_name} o empezar de cero."
@@ -17,3 +32,15 @@ es:
       success: "Presupuesto copiado de %{source_name}"
       no_source: "No se encontró un presupuesto anterior para copiar"
       already_initialized: "Este presupuesto ya ha sido configurado"
+  budget_categories:
+    index:
+      title: "Edita tus presupuestos por categoría"
+    show:
+      overview: "Resumen"
+      recent_transactions: "Transacciones recientes"
+      view_all: "Ver todas las transacciones de la categoría"
+    confirm_button:
+      confirm: "Confirmar"
+    no_categories:
+      use_defaults: "Usar predeterminados (recomendado)"
+      new_category: "Nueva categoría"

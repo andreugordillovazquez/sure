@@ -13,7 +13,10 @@ en:
     edit:
       edit: Edit category
     form:
+      name_label: Name
+      parent_category_optional: Parent category (optional)
       placeholder: Category name
+      unassigned: "(unassigned)"
     index:
       bootstrap: Use defaults (recommended)
       categories: Categories

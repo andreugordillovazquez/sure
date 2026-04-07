@@ -139,5 +139,28 @@ es:
       success: "Se han creado %{count} cuenta(s) con éxito."
     sync:
       success: Sincronización iniciada
+    api_error:
+      title: Error de conexión con Lunch Flow
+      unable_to_connect: No se puede conectar con Lunch Flow
+      common_issues: "Problemas comunes:"
+      invalid_api_key: Clave API no válida
+      invalid_api_key_hint: Comprueba tu clave API en los Ajustes del Proveedor
+      expired_credentials: Credenciales caducadas
+      expired_credentials_hint: Genera una nueva clave API desde Lunch Flow
+      network_issue: Problema de red
+      network_issue_hint: Comprueba tu conexión a Internet
+      service_down: Servicio no disponible
+      service_down_hint: La API de Lunch Flow puede estar temporalmente no disponible
+      check_provider_settings: Comprobar ajustes del proveedor
+    setup_required:
+      title: Configuración de Lunch Flow necesaria
+      api_key_not_configured: Clave API no configurada
+      configure_api_key: Antes de vincular cuentas de Lunch Flow, necesitas configurar tu clave API de Lunch Flow.
+      setup_steps: "Pasos de configuración:"
+      step_1: "Ve a <strong>Ajustes → Proveedores</strong>"
+      step_2: "Busca la sección de <strong>Lunch Flow</strong>"
+      step_3: Introduce tu clave API de Lunch Flow
+      step_4: Vuelve aquí para vincular tus cuentas
+      go_to_provider_settings: Ir a ajustes del proveedor
     update:
       success: Conexión con Lunch Flow actualizada

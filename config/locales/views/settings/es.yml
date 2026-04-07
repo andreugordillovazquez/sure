@@ -26,6 +26,8 @@ es:
         page_title: Pagos
         subscription_subtitle: Actualiza los detalles de tu tarjeta de crédito
         subscription_title: Gestionar contribuciones
+        manage: Gestionar
+        choose_level: Elegir nivel
     preferences:
       show:
         country: País
@@ -154,6 +156,10 @@ es:
       self_hosting_label: Autoalojamiento
       tags_label: Etiquetas
       transactions_section_title: Transacciones
+      llm_usage_label: Uso de IA
+      providers_label: Proveedores
+      sso_providers_label: Proveedores SSO
+      users_label: Usuarios
       whats_new_label: Novedades
       api_keys_label: Clave API
       appearance_label: Apariencia
@@ -167,8 +173,34 @@ es:
       choose_label: (opcional)
       change: Cambiar foto
     providers:
+      save_configuration: Guardar configuración
+      update_configuration: Actualizar configuración
       show:
-        coinbase_title: Coinbase
+        description: Configura las credenciales para proveedores de sincronización externos. Los ajustes configurados aquí sobrescribirán las variables de entorno.
+        lunchflow_title: Lunch Flow
+        simplefin_title: SimpleFIN
+        enable_banking_title: Enable Banking (beta)
+        coinstats_title: CoinStats (beta)
+        mercury_title: Mercury (beta)
+        coinbase_title: Coinbase (beta)
+        snaptrade_title: SnapTrade (beta)
+        indexa_capital_title: Indexa Capital (alfa)
+      lunchflow_panel:
+        api_key_label: Clave API
+        base_url_label: URL base (opcional)
+      mercury_panel:
+        token_label: Token
+        base_url_label: URL base (opcional)
+      simplefin_panel:
+        setup_token_label: Token de configuración
+        setup_token_placeholder: Pega el token de configuración de SimpleFIN
+      enable_banking_panel:
+        country_label: País
+        application_id_label: ID de aplicación
+        client_certificate_label: Certificado de cliente (con clave privada)
+        remove_confirm: ¿Estás seguro de que deseas eliminar esta conexión?
+        callback_url_instruction: "Para la URL de retorno (callback), utiliza %{callback_url}."
+        connection_error: Error de conexión
       encryption_error:
         title: Configuración de Cifrado Requerida
         message: Las claves de cifrado de Active Record no están configuradas. Por favor, asegúrate de que las credenciales de cifrado (active_record_encryption.primary_key, active_record_encryption.deterministic_key y active_record_encryption.key_derivation_salt) estén correctamente configuradas en tus credenciales de Rails o variables de entorno antes de usar proveedores de sincronización.
@@ -187,6 +219,18 @@ es:
         disconnect_confirm: ¿Estás seguro de que deseas desconectar esta conexión de Coinbase? Tus cuentas sincronizadas pasarán a ser cuentas manuales.
         status_connected: Coinbase está conectado y sincronizando tus activos de criptomonedas.
         status_not_connected: No conectado. Introduce tus credenciales de API arriba para comenzar.
-      enable_banking_panel:
-        callback_url_instruction: "Para la URL de retorno (callback), utiliza %{callback_url}."
-        connection_error: Error de conexión
+    llm_usages:
+      show:
+        page_title: Uso y costes de IA
+        start_date: Fecha de inicio
+        end_date: Fecha de fin
+        filter: Filtrar
+        cost_by_operation: Coste por operación
+        cost_by_model: Coste por modelo
+        recent_usage: Uso reciente
+    bank_sync:
+      show:
+        page_title: Sincronización bancaria
+    guides:
+      show:
+        page_title: Guías

@@ -4,10 +4,25 @@ en:
     name:
       custom_range: "%{start} - %{end_date}"
       month_year: "%{month}"
+    edit:
+      title: "Setup your budget"
+      budgeted_spending: "Budgeted spending"
+      expected_income: "Expected income"
+      continue: "Continue"
     show:
+      edit: "Edit"
       tabs:
         actual: Actual
         budgeted: Budgeted
+    budget_donut:
+      new_budget: "New budget"
+    budget_header:
+      today: "Today"
+    budget_nav:
+      setup: "Setup"
+      categories: "Categories"
+    over_allocation_warning:
+      fix_allocations: "Fix allocations"
     copy_previous_prompt:
       title: "Set up your budget"
       description: "You can copy your budget from %{source_name} or start fresh."
@@ -17,3 +32,15 @@ en:
       success: "Budget copied from %{source_name}"
       no_source: "No previous budget found to copy from"
       already_initialized: "This budget has already been set up"
+  budget_categories:
+    index:
+      title: "Edit your category budgets"
+    show:
+      overview: "Overview"
+      recent_transactions: "Recent Transactions"
+      view_all: "View all category transactions"
+    confirm_button:
+      confirm: "Confirm"
+    no_categories:
+      use_defaults: "Use defaults (recommended)"
+      new_category: "New category"

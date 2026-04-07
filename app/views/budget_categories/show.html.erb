@@ -26,7 +26,7 @@
   <% end %>
 
   <% dialog.with_body do %>
-    <% dialog.with_section(title: "Overview", open: true) do %>
+    <% dialog.with_section(title: t(".overview"), open: true) do %>
       <div class="pb-4">
         <dl class="space-y-3 px-3 py-2">
           <div class="flex items-center justify-between text-sm">
@@ -87,7 +87,7 @@
       </div>
     <% end %>
 
-    <% dialog.with_section(title: "Recent Transactions", open: true) do %>
+    <% dialog.with_section(title: t(".recent_transactions"), open: true) do %>
       <div class="space-y-2">
         <div class="px-3 py-4 space-y-2">
           <% if @recent_transactions.any? %>
@@ -120,7 +120,7 @@
             </ul>
 
             <%= render DS::Link.new(
-              text: "View all category transactions",
+              text: t(".view_all"),
               variant: "outline",
               full_width: true,
               href: transactions_path(q: {

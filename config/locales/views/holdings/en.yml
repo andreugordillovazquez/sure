@@ -40,6 +40,8 @@ en:
       shares: "%{qty} shares"
       unknown: "--"
       no_cost_basis: No cost basis
+    new:
+      coming_soon: "Coming soon..."
     index:
       average_cost: Average cost
       holdings: Holdings

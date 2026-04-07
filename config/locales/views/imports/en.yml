@@ -32,30 +32,106 @@ en:
           details.
         errors_notice_mobile: You have errors in your data.  Tap over the error tooltip to see
           details.
+        next_step: Next step
         title: Clean your data
     configurations:
       update:
         success: Import configured successfully.
+      account_import:
+        apply_configuration: Apply configuration
+        balance: Balance
+        balance_date: Balance Date
+        currency: Currency
+        date_format: Date Format
+        default: Default
+        entity_type: Entity Type
+        leave_empty: Leave empty
+        name: Name
+        select_format: Select format
       category_import:
         button_label: Continue
         description: Upload a simple CSV file (like the one we generate when you
           export your data). We'll automatically map the columns for you.
         instructions: Select continue to parse your CSV and move on to the clean step.
       mint_import:
+        account_optional: Account (optional)
+        amount: Amount
+        apply_configuration: Apply configuration
+        category_optional: Category (optional)
+        currency: Currency
+        date: Date
         date_format_label: Date format
+        format: Format
+        incomes_negative: Incomes are negative
+        incomes_positive: Incomes are positive
+        leave_empty: Leave empty
+        name_optional: Name (optional)
+        preconfigured_notice: We have pre-configured your Mint import for you. Please proceed to the next step.
+        select_format: Select format
+        tags_optional: Tags (optional)
       rule_import:
         description: Configure your rule import. Rules will be created or updated based
           on the CSV data.
         process_button: Process Rules
         process_help: Click the button below to process your CSV and generate rule rows.
       show:
+        apply_template: Apply template
         description: Select the columns that correspond to each field in your CSV.
+        manually_configure: Manually configure
+        template_found: Template configuration found
+        template_found_description: We found a configuration from a previous import for this account.  Would you like to apply it to this import?
         title: Configure your import
       trade_import:
+        account: Account
+        apply_configuration: Apply configuration
+        buys_negative: Buys are negative qty
+        buys_positive: Buys are positive qty
+        currency: Currency
+        date: Date
         date_format_label: Date format
+        default: Default
+        format: Format
+        leave_empty: Leave empty
+        name: Name
+        note: "Note:"
+        price: Price
+        quantity: Quantity
+        security_provider_warning: The security prices provider is not configured. Your trade imports will work, but Sure will not backfill price history. Please go to your settings to configure this.
+        select_column: Select column
+        select_format: Select format
+        stock_exchange_code: Stock exchange code
+        ticker: Ticker
       transaction_import:
+        account: Account
+        amount: Amount
+        amount_type: Amount type
+        amount_type_strategy: Amount type strategy
+        apply_configuration: Apply configuration
+        as_amount_type_column: as amount type column
+        as_identifier_value: as identifier value
+        category: Category
+        currency: Currency
+        date: Date
         date_format_label: Date format
+        default: Default
+        expense_outflow: Expense (outflow)
+        format: Format
+        income_inflow: Income (inflow)
+        incomes_negative: Incomes are negative
+        incomes_positive: Incomes are positive
+        leave_empty: Leave empty
+        name: Name
+        notes: Notes
         rows_to_skip_label: Skip first n rows
+        select_column: Select column
+        select_convention: Select convention
+        select_format: Select format
+        select_strategy: Select strategy
+        select_type: Select type
+        select_value: Select value
+        set: Set
+        tags: Tags
+        treat_as_html: "Treat \"%{value}\" as"
     confirms:
       sure_import:
         title: Confirm your import
@@ -67,6 +143,7 @@ en:
       mappings:
         create_account: Create account
         csv_mapping_label: "%{mapping} in CSV"
+        next: Next
         sure_mapping_label: "%{mapping} in %{product_name}"
         no_accounts: You don't have any accounts yet. Please create an account that
           we can use for (unassigned) rows in your CSV or go back to the Clean step
@@ -90,7 +167,14 @@ en:
         tag_mapping_title: Assign your tags
     uploads:
       show:
+        account_optional: Account (optional)
+        copy_paste: Copy & Paste
+        drop_csv_subtitle: Your file will be uploaded automatically
+        drop_csv_title: Drop CSV to upload
+        multi_account_import: Multi-account import
+        paste_placeholder: Paste your CSV file contents here
         qif_title: Upload QIF file
+        upload_csv: Upload CSV
         qif_description: Select the account this QIF file belongs to, then upload your .qif export from Quicken.
         qif_account_label: Account
         qif_account_placeholder: Select an account…
@@ -119,6 +203,23 @@ en:
         hint_html: Upload the <strong>all.ndjson</strong> file from your data export ZIP
         ndjson_invalid: Must be valid NDJSON with at least one record
   imports:
+    failure:
+      description: Please check that your file format, for any errors and that all required fields are filled, then come back and try again.
+      title: Import failed
+      try_again: Try again
+    importing:
+      back_to_dashboard: Back to dashboard
+      check_status: Check status
+      description: Your import is in progress. Check the imports menu for status updates or click 'Check Status' to refresh the page for updates. Feel free to continue using the app.
+      title: Import in progress
+    revert_failure:
+      description: Please try again
+      title: Reverting import failed
+      try_again: Try again
+    success:
+      back_to_dashboard: Back to dashboard
+      description: Your imported data has been successfully added to the app and is now ready for use.
+      title: Import successful
     date_format:
       heading: Date format
       description: "The date format was auto-detected from your file. Change it if dates look incorrect."

@@ -15,7 +15,7 @@
       <div>
         <% ["primary", "outline-destructive", "destructive"].each do |variant| %>
           <%= render DS::Button.new(
-          text: "Confirm",
+          text: t("layouts.shared.confirm_dialog.confirm"),
           variant: variant,
           autofocus: true,
           full_width: true,

@@ -24,6 +24,8 @@ es:
       details: Detalles
       note_label: Notas
       note_placeholder: Añade una nota a esta transferencia
+      category: Categoría
+      uncategorized: Sin categorizar
       overview: Resumen
       settings: Configuración
     update:

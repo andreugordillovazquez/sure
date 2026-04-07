@@ -26,6 +26,8 @@ en:
         page_title: Payments
         subscription_subtitle: Update your credit card details
         subscription_title: Manage contributions
+        manage: Manage
+        choose_level: Choose level
     appearances:
       show:
         page_title: Appearance
@@ -156,6 +158,10 @@ en:
       self_hosting_label: Self-Hosting
       tags_label: Tags
       transactions_section_title: Transactions
+      llm_usage_label: LLM Usage
+      providers_label: Providers
+      sso_providers_label: SSO Providers
+      users_label: Users
       whats_new_label: What's new
       api_keys_label: API Key
       appearance_label: Appearance
@@ -169,8 +175,34 @@ en:
       choose_label: (optional)
       change: Change photo
     providers:
+      save_configuration: Save Configuration
+      update_configuration: Update Configuration
       show:
-        coinbase_title: Coinbase
+        description: Configure credentials for third-party sync providers. Settings configured here will override environment variables.
+        lunchflow_title: Lunch Flow
+        simplefin_title: SimpleFIN
+        enable_banking_title: Enable Banking (beta)
+        coinstats_title: CoinStats (beta)
+        mercury_title: Mercury (beta)
+        coinbase_title: Coinbase (beta)
+        snaptrade_title: SnapTrade (beta)
+        indexa_capital_title: Indexa Capital (alpha)
+      lunchflow_panel:
+        api_key_label: API Key
+        base_url_label: Base URL (Optional)
+      mercury_panel:
+        token_label: Token
+        base_url_label: Base URL (Optional)
+      simplefin_panel:
+        setup_token_label: Setup Token
+        setup_token_placeholder: Paste SimpleFIN setup token
+      enable_banking_panel:
+        country_label: Country
+        application_id_label: Application ID
+        client_certificate_label: Client Certificate (with Private Key)
+        remove_confirm: Are you sure you want to remove this connection?
+        callback_url_instruction: "For the callback URL, use %{callback_url}."
+        connection_error: Connection Error
       encryption_error:
         title: Encryption Configuration Required
         message: Active Record encryption keys are not configured. Please ensure the encryption credentials (active_record_encryption.primary_key, active_record_encryption.deterministic_key, and active_record_encryption.key_derivation_salt) are properly set up in your Rails credentials or environment variables before using sync providers.
@@ -189,6 +221,18 @@ en:
         disconnect_confirm: Are you sure you want to disconnect this Coinbase connection? Your synced accounts will become manual accounts.
         status_connected: Coinbase is connected and syncing your crypto holdings.
         status_not_connected: Not connected. Enter your API credentials above to get started.
-      enable_banking_panel:
-        callback_url_instruction: "For the callback URL, use %{callback_url}."
-        connection_error: Connection Error
+    llm_usages:
+      show:
+        page_title: LLM Usage & Costs
+        start_date: Start Date
+        end_date: End Date
+        filter: Filter
+        cost_by_operation: Cost by Operation
+        cost_by_model: Cost by Model
+        recent_usage: Recent Usage
+    bank_sync:
+      show:
+        page_title: Bank Sync
+    guides:
+      show:
+        page_title: Guides
