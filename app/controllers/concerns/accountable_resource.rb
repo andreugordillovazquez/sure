@@ -26,7 +26,7 @@ module AccountableResource
   def show
     @chart_view = params[:chart_view] || "balance"
     @q = params.fetch(:q, {}).permit(:search)
-    entries = @account.entries.search(@q).reverse_chronological
+    entries = @account.entries.excluding_hidden.search(@q).reverse_chronological
 
     @pagy, @entries = pagy(entries, limit: safe_per_page(10))
   end

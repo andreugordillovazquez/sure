@@ -45,7 +45,7 @@ class AccountsController < ApplicationController
     @chart_view = params[:chart_view] || "balance"
     @tab = params[:tab]
     @q = params.fetch(:q, {}).permit(:search, status: [])
-    entries = @account.entries.where(excluded: false).search(@q).reverse_chronological
+    entries = @account.entries.where(excluded: false).excluding_hidden.search(@q).reverse_chronological
 
     @pagy, @entries = pagy(
       entries,
