@@ -73,6 +73,7 @@ class IncomeStatement::FamilyStats
           WHERE a.family_id = :family_id
             AND t.kind NOT IN (#{budget_excluded_kinds_sql})
             AND ae.excluded = false
+            AND ae.hidden = false
             AND (t.extra -> 'simplefin' ->> 'pending')::boolean IS DISTINCT FROM true
             AND (t.extra -> 'plaid' ->> 'pending')::boolean IS DISTINCT FROM true
             #{exclude_tax_advantaged_sql}

@@ -31,6 +31,8 @@ class Entry < ApplicationRecord
     joins(:account).where(accounts: { status: [ "draft", "active" ] })
   }
 
+  scope :excluding_hidden, -> { where(hidden: false) }
+
   scope :chronological, -> {
     order(
       date: :asc,

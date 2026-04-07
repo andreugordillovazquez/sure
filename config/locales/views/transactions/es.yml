@@ -36,6 +36,10 @@ es:
       details: Detalles
       exclude: Excluir
       exclude_description: Las transacciones excluidas se eliminarán de los cálculos y presupuestos e informes.
+      hide_title: Ocultar transacción
+      hide_description: Oculta permanentemente esta transacción de todas las vistas, reportes y saldos. No se puede deshacer desde la interfaz.
+      hide_button: Ocultar
+      hide_confirm: Esta transacción se ocultará permanentemente de todas las vistas y reportes. ¿Estás seguro?
       activity_type: Tipo de actividad
       activity_type_description: Tipo de actividad de inversión (Compra, Venta, Dividendo, etc.). Detectado automáticamente o configurado manualmente.
       one_time_title: Transacción puntual %{type}
@@ -126,6 +130,8 @@ es:
       expenses: Gastos
       inflow: Entradas
       outflow: Salidas
+    hide:
+      success: Transacción ocultada
     merge_duplicate:
       success: Transacciones combinadas correctamente
       failure: No se pudieron combinar las transacciones

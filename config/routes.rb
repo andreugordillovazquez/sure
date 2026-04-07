@@ -299,6 +299,7 @@ Rails.application.routes.draw do
       post :merge_duplicate
       post :dismiss_duplicate
       post :unlock
+      post :hide
     end
   end
 

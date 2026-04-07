@@ -197,6 +197,16 @@ class TransactionsController < ApplicationController
     redirect_back_or_to transactions_path
   end
 
+  def hide
+    transaction = accessible_transactions.includes(entry: :account).find(params[:id])
+
+    return unless require_account_permission!(transaction.entry.account)
+
+    transaction.entry.update!(hidden: true)
+    flash[:notice] = t("transactions.hide.success")
+    redirect_to transactions_path
+  end
+
   def convert_to_trade
     @transaction = accessible_transactions.includes(entry: :account).find(params[:id])
     @entry = @transaction.entry

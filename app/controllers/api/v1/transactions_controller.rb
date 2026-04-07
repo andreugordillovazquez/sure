@@ -12,7 +12,7 @@ class Api::V1::TransactionsController < Api::V1::BaseController
     family = current_resource_owner.family
     accessible_account_ids = family.accounts.accessible_by(current_resource_owner).select(:id)
     transactions_query = family.transactions.visible
-      .joins(:entry).where(entries: { account_id: accessible_account_ids })
+      .joins(:entry).merge(Entry.excluding_hidden).where(entries: { account_id: accessible_account_ids })
 
     # Apply filters
     transactions_query = apply_filters(transactions_query)
@@ -181,6 +181,7 @@ end
       family = current_resource_owner.family
       @transaction = family.transactions
         .joins(entry: :account)
+        .merge(Entry.excluding_hidden)
         .merge(Account.accessible_by(current_resource_owner))
         .find(params[:id])
       @entry = @transaction.entry

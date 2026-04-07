@@ -38,6 +38,10 @@ en:
       attachments: Attachments
       exclude: Exclude
       exclude_description: Excluded transactions will be removed from budgeting calculations and reports.
+      hide_title: Hide transaction
+      hide_description: Permanently hide this transaction from all views, reports, and balances. This cannot be undone from the UI.
+      hide_button: Hide
+      hide_confirm: This transaction will be permanently hidden from all views and reports. Are you sure?
       activity_type: Activity Type
       activity_type_description: Type of investment activity (Buy, Sell, Dividend, etc.). Auto-detected or set manually.
       one_time_title: One-time %{type}
@@ -112,6 +116,8 @@ en:
       split: Split
       split_tooltip: This transaction has been split into multiple entries
       split_child_tooltip: Part of a split transaction
+    hide:
+      success: Transaction hidden
     merge_duplicate:
       success: Transactions merged successfully
       failure: Could not merge transactions

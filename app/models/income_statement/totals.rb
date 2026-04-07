@@ -75,6 +75,7 @@ class IncomeStatement::Totals
         )
         WHERE at.kind NOT IN (#{budget_excluded_kinds_sql})
           AND ae.excluded = false
+          AND ae.hidden = false
           AND a.family_id = :family_id
           AND a.status IN ('draft', 'active')
           #{exclude_tax_advantaged_sql}
@@ -107,6 +108,7 @@ class IncomeStatement::Totals
             OR at.investment_activity_label NOT IN ('Transfer', 'Sweep In', 'Sweep Out', 'Exchange')
           )
           AND ae.excluded = false
+          AND ae.hidden = false
           AND a.family_id = :family_id
           AND a.status IN ('draft', 'active')
           #{exclude_tax_advantaged_sql}

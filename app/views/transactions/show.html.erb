@@ -424,6 +424,23 @@
             ) %>
           </div>
         <% end %>
+        <%# Hide Transaction %>
+        <% unless @entry.split_child? %>
+          <div class="flex items-center justify-between gap-2 p-3">
+            <div class="text-sm space-y-1">
+              <h4 class="text-primary"><%= t(".hide_title") %></h4>
+              <p class="text-secondary"><%= t(".hide_description") %></p>
+            </div>
+            <%= render DS::Button.new(
+              text: t(".hide_button"),
+              variant: "outline-destructive",
+              href: hide_transaction_path(@entry.transaction),
+              method: :post,
+              confirm: t(".hide_confirm"),
+              frame: "_top"
+            ) %>
+          </div>
+        <% end %>
         <%# Delete Transaction Form - hidden for split children %>
         <% unless @entry.split_child? %>
           <div class="flex items-center justify-between gap-2 p-3">
