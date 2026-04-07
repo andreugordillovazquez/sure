@@ -5,7 +5,7 @@
     <div data-donut-chart-target="defaultContent" class="flex flex-col items-center">
       <% if budget.initialized? %>
         <div class="text-gray-600 text-sm mb-2">
-          <span>Spent</span>
+          <span><%= t("budgets.budget_donut.spent") %></span>
         </div>
 
         <div class="mb-2 text-3xl font-medium privacy-sensitive <%= budget.available_to_spend.negative? ? "text-red-500" : "text-primary" %>">
@@ -59,7 +59,7 @@
     <% end %>
 
     <div id="segment_unused" class="hidden">
-      <p class="text-sm text-secondary text-center mb-2">Unused</p>
+      <p class="text-sm text-secondary text-center mb-2"><%= t("budgets.budget_donut.unused") %></p>
 
       <p class="text-3xl font-medium text-primary privacy-sensitive">
         <%= format_money(budget.available_to_spend_money) %>

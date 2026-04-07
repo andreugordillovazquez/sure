@@ -23,12 +23,27 @@ en:
       title_with_name: "Edit %{resource_type} rule \"%{name}\""
     form:
       name_placeholder: "Enter a name for this rule"
+      rule_name_heading: "Rule name (optional)"
+      if_heading: "IF"
+      then_heading: "THEN"
+      for_heading: "FOR"
       add_condition: "Add condition"
       add_condition_group: "Add condition group"
       add_action: "Add action"
+    category_rule_cta:
+      updated_to: "Updated to %{category_name}"
+      description: "You can create a rule to automatically categorize transactions like this one"
+      dont_show_again: "Don't show this again"
+      dismiss: "Dismiss"
+      create_rule: "Create rule"
+    conditions:
+      add_condition: "Add condition"
+      number_placeholder: "10"
+      enter_value: "Enter a value"
     confirm:
       confirm_changes_to: "Confirm changes to \"%{name}\""
       confirm_changes: "Confirm changes"
+      cost_unavailable_no_provider: "Cost estimation unavailable (no LLM provider configured)."
       view_usage: "View usage history"
     apply_all:
       button: Apply All

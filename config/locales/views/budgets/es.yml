@@ -9,13 +9,23 @@ es:
       budgeted_spending: "Gasto presupuestado"
       expected_income: "Ingreso esperado"
       continue: "Continuar"
+      autosuggest: "Autosugerir ingresos y presupuesto de gastos"
     show:
       edit: "Editar"
+      categories: "Categorías"
       tabs:
         actual: Real
         budgeted: Presupuestado
+    actuals_summary:
+      income: "Ingresos"
+      expenses: "Gastos"
+    budgeted_summary:
+      expected_income: "Ingreso esperado"
+      budgeted: "Presupuestado"
     budget_donut:
       new_budget: "Nuevo presupuesto"
+      spent: "Gastado"
+      unused: "Sin usar"
     budget_header:
       today: "Hoy"
     budget_nav:
@@ -42,5 +52,6 @@ es:
     confirm_button:
       confirm: "Confirmar"
     no_categories:
+      oops: "¡Ups!"
       use_defaults: "Usar predeterminados (recomendado)"
       new_category: "Nueva categoría"

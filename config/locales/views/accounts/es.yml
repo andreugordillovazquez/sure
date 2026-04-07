@@ -58,6 +58,9 @@ es:
         lunchflow_entry: Vincular cuenta de Lunch Flow
         manual_entry: Introducir saldo de la cuenta
         title: ¿Cómo te gustaría añadirla?
+      select: "Seleccionar"
+      navigate: "Navegar"
+      close: "Cerrar"
       title: ¿Qué te gustaría añadir?
     show:
       activity:

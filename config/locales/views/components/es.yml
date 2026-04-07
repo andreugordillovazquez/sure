@@ -1,4 +1,9 @@
 es:
+  components:
+    ui:
+      account:
+        activity_date:
+          balance_tooltip: "El saldo al final del día, después de todas las transacciones y ajustes"
   provider_sync_summary:
     title: Resumen de sincronización
     last_sync: "Última sincronización: hace %{time_ago}"

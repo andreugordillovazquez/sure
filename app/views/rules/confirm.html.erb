@@ -33,7 +33,7 @@
                 <% if @selected_model.present? %>
                   <span class="font-semibold">Cost estimation unavailable for model "<%= @selected_model %>".</span>
                 <% else %>
-                  <span class="font-semibold">Cost estimation unavailable (no LLM provider configured).</span>
+                  <span class="font-semibold"><%= t("rules.confirm.cost_unavailable_no_provider") %></span>
                 <% end %>
                 You may incur costs, please check with the model provider for the most up-to-date prices.
               </p>

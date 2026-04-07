@@ -13,6 +13,8 @@ es:
     edit:
       edit: Editar categoría
     form:
+      color: "Color"
+      icon: "Icono"
       name_label: Nombre
       parent_category_optional: Categoría padre (opcional)
       placeholder: Nombre de la categoría
@@ -22,6 +24,7 @@ es:
       categories: Categorías
       categories_expenses: Categorías de gastos
       categories_incomes: Categorías de ingresos
+      delete_all: "Eliminar todas"
       empty: No se encontraron categorías
       new: Nueva categoría
     menu:

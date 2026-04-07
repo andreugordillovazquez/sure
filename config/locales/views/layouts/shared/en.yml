@@ -3,4 +3,8 @@ en:
   layouts:
     shared:
       confirm_dialog:
+        title: "Are you sure?"
         confirm: Confirm
+      footer:
+        privacy_policy: "Privacy Policy"
+        terms_of_service: "Terms of Service"

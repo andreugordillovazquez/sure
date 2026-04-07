@@ -9,13 +9,23 @@ en:
       budgeted_spending: "Budgeted spending"
       expected_income: "Expected income"
       continue: "Continue"
+      autosuggest: "Autosuggest income & spending budget"
     show:
       edit: "Edit"
+      categories: "Categories"
       tabs:
         actual: Actual
         budgeted: Budgeted
+    actuals_summary:
+      income: "Income"
+      expenses: "Expenses"
+    budgeted_summary:
+      expected_income: "Expected income"
+      budgeted: "Budgeted"
     budget_donut:
       new_budget: "New budget"
+      spent: "Spent"
+      unused: "Unused"
     budget_header:
       today: "Today"
     budget_nav:
@@ -42,5 +52,6 @@ en:
     confirm_button:
       confirm: "Confirm"
     no_categories:
+      oops: "Oops!"
       use_defaults: "Use defaults (recommended)"
       new_category: "New category"

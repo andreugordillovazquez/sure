@@ -95,6 +95,9 @@ es:
       merge_duplicate: Sí, combinarlas
       keep_both: No, mantener ambas
     keep_both: "No, mantener ambas"
+    transfer_match:
+      confirm: "Confirmar emparejamiento"
+      reject: "Rechazar emparejamiento"
     split_parent_row:
       split_label: División
     transaction:
@@ -243,6 +246,9 @@ es:
         unexpected_error: "Error inesperado durante la conversión: %{error}"
     searches:
       filters:
+        date_filter:
+          start_date: "Fecha de inicio"
+          end_date: "Fecha de fin"
         amount_filter:
           equal_to: Igual a
           greater_than: Mayor que

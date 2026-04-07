@@ -94,6 +94,9 @@ en:
     potential_duplicate_description: This pending transaction may be the same as the posted transaction below. If so, merge them to avoid double-counting.
     merge_duplicate: Yes, merge them
     keep_both: No, keep both
+    transfer_match:
+      confirm: "Confirm match"
+      reject: "Reject match"
     split_parent_row:
       split_label: "Split"
     transaction:
@@ -242,6 +245,9 @@ en:
         unexpected_error: "Unexpected error during conversion: %{error}"
     searches:
       filters:
+        date_filter:
+          start_date: "Start date"
+          end_date: "End date"
         amount_filter:
           equal_to: Equal to
           greater_than: Greater than

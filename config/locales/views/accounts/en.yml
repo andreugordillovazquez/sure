@@ -58,6 +58,9 @@ en:
         lunchflow_entry: Link Lunch Flow account
         manual_entry: Enter account balance
         title: How would you like to add it?
+      select: "Select"
+      navigate: "Navigate"
+      close: "Close"
       title: What would you like to add?
     show:
       activity:

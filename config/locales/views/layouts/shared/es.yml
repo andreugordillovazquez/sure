@@ -3,4 +3,8 @@ es:
   layouts:
     shared:
       confirm_dialog:
+        title: "¿Estás seguro?"
         confirm: Confirmar
+      footer:
+        privacy_policy: "Política de privacidad"
+        terms_of_service: "Condiciones del servicio"

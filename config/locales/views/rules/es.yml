@@ -23,12 +23,27 @@ es:
       title_with_name: "Editar regla de %{resource_type} \"%{name}\""
     form:
       name_placeholder: "Introduce un nombre para esta regla"
+      rule_name_heading: "Nombre de la regla (opcional)"
+      if_heading: "SI"
+      then_heading: "ENTONCES"
+      for_heading: "PARA"
       add_condition: "Añadir condición"
       add_condition_group: "Añadir grupo de condiciones"
       add_action: "Añadir acción"
+    category_rule_cta:
+      updated_to: "Actualizado a %{category_name}"
+      description: "Puedes crear una regla para categorizar automáticamente transacciones como esta"
+      dont_show_again: "No mostrar de nuevo"
+      dismiss: "Descartar"
+      create_rule: "Crear regla"
+    conditions:
+      add_condition: "Añadir condición"
+      number_placeholder: "10"
+      enter_value: "Introduce un valor"
     confirm:
       confirm_changes_to: "Confirmar cambios en \"%{name}\""
       confirm_changes: "Confirmar cambios"
+      cost_unavailable_no_provider: "Coste no disponible (sin proveedor de IA configurado)."
       view_usage: "Ver historial de uso"
     apply_all:
       button: Aplicar todas
