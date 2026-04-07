@@ -116,6 +116,7 @@ class RecurringTransaction < ApplicationRecord
     lookback_date = lookback_months.months.ago.to_date
 
     entries = (account.present? ? account.entries : family.entries)
+      .excluding_hidden
       .where(entryable_type: "Transaction")
       .where(currency: currency)
       .where("entries.date >= ?", lookback_date)
@@ -180,7 +181,7 @@ class RecurringTransaction < ApplicationRecord
   def matching_transactions
     # For manual recurring with amount variance, match within range
     # For automatic recurring, match exact amount
-    base = account.present? ? account.entries : family.entries
+    base = (account.present? ? account.entries : family.entries).excluding_hidden
 
     entries = if manual? && has_amount_variance?
       base

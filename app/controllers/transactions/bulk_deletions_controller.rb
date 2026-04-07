@@ -4,6 +4,7 @@ class Transactions::BulkDeletionsController < ApplicationController
     # Only allow deletion from accounts where user has owner or full_control permission
     writable_account_ids = writable_accounts.pluck(:id)
     entries_scope = Current.family.entries
+                      .excluding_hidden
                       .where(account_id: writable_account_ids)
                       .where(parent_entry_id: nil)
     destroyed = entries_scope.destroy_by(id: bulk_delete_params[:entry_ids])

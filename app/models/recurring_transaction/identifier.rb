@@ -12,6 +12,7 @@ class RecurringTransaction
 
       # Get all transactions from the last 3 months
       entries_with_transactions = family.entries
+        .excluding_hidden
         .where(entryable_type: "Transaction")
         .where("entries.date >= ?", three_months_ago)
         .includes(:entryable)
