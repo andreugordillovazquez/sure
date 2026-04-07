@@ -77,7 +77,7 @@
                     disabled: @entry.linked? || split_locked || edit_locked,
                     disable_currency: @entry.linked? || split_locked || edit_locked %>
             </div>
-            <div data-controller="personal-amount" data-personal-amount-total-value="<%= @entry.amount.abs %>">
+            <div data-controller="personal-amount" data-personal-amount-total-value="<%= @entry.amount.abs %>" class="space-y-2">
               <div class="form-field">
                 <label class="form-field__label"><%= t(".personal_amount_type_label") %></label>
                 <select class="form-field__input"
@@ -108,8 +108,8 @@
                 </div>
               </div>
               <% if @entry.personal_amount.present? %>
-                <% pct = (@entry.personal_amount.abs / @entry.amount.abs * 100).round(0) %>
                 <p class="text-xs text-secondary">
+                  <% pct = (@entry.personal_amount.abs / @entry.amount.abs * 100).round(0) %>
                   <%= t(".personal_amount_hint",
                         total: format_money(@entry.amount_money.abs),
                         share: format_money(@entry.personal_amount_money.abs),
