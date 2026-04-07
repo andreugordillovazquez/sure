@@ -38,15 +38,15 @@ es:
         language: Idioma
         language_auto: Idioma del navegador
         page_title: Preferencias
-        theme_dark: Oscuro
-        theme_light: Claro
-        theme_subtitle: Elige un tema preferido para la aplicación
-        theme_system: Sistema
-        theme_title: Tema
         timezone: Zona horaria
         month_start_day: El mes de presupuesto comienza el
         month_start_day_hint: Establece cuándo empieza tu mes financiero (ej. el día de cobro)
         month_start_day_warning: Tus presupuestos y cálculos del mes en curso utilizarán este día personalizado en lugar del día 1 de cada mes.
+        sharing_title: "Compartir en %{moniker}"
+        sharing_subtitle: "Controla cómo se comparten las cuentas en tu %{moniker}"
+        sharing_default_label: Compartir por defecto para cuentas nuevas
+        sharing_shared: Compartir con todos los miembros
+        sharing_private: Mantener privada por defecto
     profiles:
       destroy:
         cannot_remove_self: No puedes eliminarte a ti mismo de la cuenta.
@@ -115,6 +115,22 @@ es:
         sso_confirm_body: ¿Estás seguro de que deseas desconectar tu cuenta de %{provider}? Podrás volver a conectarla más tarde iniciando sesión de nuevo con ese proveedor.
         sso_confirm_button: Desconectar
         sso_warning_message: Este es tu único método de acceso. Deberías establecer una contraseña en tus ajustes de seguridad antes de desconectarlo, de lo contrario podrías perder el acceso a tu cuenta.
+    appearances:
+      show:
+        page_title: Apariencia
+        theme_title: Tema
+        theme_subtitle: Elige un tema preferido para la aplicación
+        theme_dark: Oscuro
+        theme_light: Claro
+        theme_system: Sistema
+        transactions_title: Transacciones
+        transactions_subtitle: Personaliza cómo se muestran las transacciones
+        dashboard_title: Panel principal
+        dashboard_subtitle: Personaliza cómo se muestra el panel principal
+        dashboard_two_column_title: Diseño en dos columnas
+        dashboard_two_column_description: Muestra los widgets del panel en dos columnas en pantallas grandes. Cuando está desactivado, los widgets se apilan en una sola columna.
+        split_grouped_title: Agrupar transacciones divididas
+        split_grouped_description: Muestra las transacciones divididas agrupadas bajo la transacción principal. Cuando está desactivado, las subdivisiones aparecen como filas individuales.
     settings_nav:
       accounts_label: Cuentas
       advanced_section_title: Avanzado
@@ -140,6 +156,7 @@ es:
       transactions_section_title: Transacciones
       whats_new_label: Novedades
       api_keys_label: Clave API
+      appearance_label: Apariencia
       bank_sync_label: Sincronización Bancaria
     settings_nav_link_large:
       next: Siguiente

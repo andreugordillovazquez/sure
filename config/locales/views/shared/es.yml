@@ -10,5 +10,6 @@ es:
       label: Importe
     syncing_notice:
       syncing: Sincronizando datos de cuentas...
+    require_admin: "Solo los administradores pueden realizar esta acción"
     trend_change:
       no_change: "sin cambios"

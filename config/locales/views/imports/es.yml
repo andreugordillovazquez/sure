@@ -53,6 +53,13 @@ es:
         date_format_label: Formato de fecha
         rows_to_skip_label: Omitir las primeras n filas
     confirms:
+      sure_import:
+        title: Confirma tu importación
+        description: Revisa los datos que se importarán desde tu archivo de exportación.
+        summary: Resumen de importación
+        empty_summary: No se encontraron registros importables en este archivo. Puede estar vacío o las líneas no coinciden con el formato de exportación esperado.
+        publish_button: Iniciar importación
+        cancel: Cancelar
       mappings:
         create_account: Crear cuenta
         csv_mapping_label: "%{mapping} en CSV"
@@ -87,7 +94,28 @@ es:
         instructions_4: Las columnas marcadas con un asterisco (*) son datos obligatorios.
         instructions_5: Sin comas, sin símbolos de moneda y sin paréntesis en los números.
         title: Importa tus datos
+      sure_import:
+        title: Importar desde exportación
+        description: Sube el archivo all.ndjson de tu exportación de datos para restaurar tus cuentas, transacciones, categorías y más.
+        drop_title: Arrastra el NDJSON para subirlo
+        drop_subtitle: Tu archivo se subirá automáticamente
+        browse: Explorar
+        browse_hint: para añadir tu archivo all.ndjson aquí
+        upload_button: Subir NDJSON
+        hint_html: "Sube el archivo **all.ndjson** de tu ZIP de exportación de datos"
+        ndjson_invalid: Debe ser un NDJSON válido con al menos un registro
   imports:
+    type_labels:
+      transaction_import: Importación de transacciones
+      trade_import: Importación de operaciones
+      account_import: Importación de cuentas
+      mint_import: Importación de Mint
+      qif_import: Importación de QIF
+      category_import: Importación de categorías
+      rule_import: Importación de reglas
+      pdf_import: Importación de PDF
+      document_import: Importación de documentos
+      sure_import: Importación de Sure
     date_format:
       heading: Formato de fecha
       description: "El formato de fecha se detectó automáticamente desde tu archivo. Cámbialo si las fechas parecen incorrectas."
@@ -112,6 +140,17 @@ es:
         status: Estado
         actions: Acciones
       row:
+        type_labels:
+          transaction_import: Transacción
+          trade_import: Operación
+          account_import: Cuenta
+          mint_import: Mint
+          qif_import: QIF
+          category_import: Categoría
+          rule_import: Regla
+          pdf_import: PDF
+          document_import: Documento
+          sure_import: Sure
         status:
           in_progress: En progreso
           uploading: Procesando filas
@@ -127,6 +166,12 @@ es:
       empty: Aún no hay importaciones.
     new:
       description: Puedes importar manualmente varios tipos de datos mediante CSV o usar una de nuestras plantillas de importación como Mint.
+      tab_financial_tools: Herramientas financieras y archivos
+      tab_raw_data: Datos sin procesar
+      coming_soon: Próximamente
+      import_ynab: Importar desde YNAB
+      import_sure: Importar desde Sure
+      import_sure_description: Archivo .ndjson de exportación completa
       import_accounts: Importar cuentas
       import_categories: Importar categorías
       import_mint: Importar desde Mint
@@ -144,6 +189,8 @@ es:
       file_too_large: El archivo es demasiado grande. El tamaño máximo es %{max_size}MB.
       invalid_file_type: Tipo de archivo no válido. Por favor, sube un archivo CSV.
       csv_uploaded: CSV subido correctamente.
+      ndjson_uploaded: Archivo NDJSON subido correctamente.
+      invalid_ndjson_file_type: Tipo o formato de archivo no válido. Sube un archivo de exportación .ndjson o .json válido.
       pdf_too_large: El archivo PDF es demasiado grande. El tamaño máximo es %{max_size}MB.
       pdf_processing: Tu PDF se está procesando. Recibirás un correo electrónico cuando el análisis haya finalizado.
       invalid_pdf: El archivo subido no es un PDF válido.

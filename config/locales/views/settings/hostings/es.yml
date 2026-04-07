@@ -6,6 +6,9 @@ es:
         description: Controla cómo se registran nuevas personas en tu instancia de %{product}.
         email_confirmation_description: Cuando está habilitado, los usuarios deben confirmar su dirección de correo electrónico al cambiarla o registrarse.
         email_confirmation_title: Requerir confirmación de correo electrónico
+        default_family_title: Grupo familiar por defecto para nuevos usuarios
+        default_family_description: Asigna los nuevos usuarios a este grupo familiar solo si no tienen invitación.
+        default_family_none: Ninguno (crear nuevo grupo familiar)
         generate_tokens: Generar nuevo código
         generated_tokens: Códigos generados
         title: Incorporación

@@ -1,6 +1,7 @@
 ---
 es:
   accounts:
+    not_authorized: "No tienes permiso para gestionar esta cuenta"
     account:
       edit: Editar
       link_lunchflow: Vincular con Lunch Flow
@@ -13,6 +14,7 @@ es:
       remove_default: Quitar predeterminada
       default_label: Predeterminada
       delete: Eliminar cuenta
+      sharing: Compartir
     chart:
       data_not_available: Datos no disponibles para el período seleccionado
     create:
@@ -28,6 +30,7 @@ es:
       no_accounts: Aún no hay cuentas
     form:
       balance: Saldo actual
+      opening_balance_date_label: Fecha del saldo inicial
       name_label: Nombre de la cuenta
       name_placeholder: Ejemplo de nombre de cuenta
       additional_details: Detalles adicionales

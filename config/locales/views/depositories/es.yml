@@ -6,5 +6,16 @@ es:
     form:
       none: Ninguno
       subtype_prompt: Seleccionar tipo de cuenta
+      interest_rate: Tasa de interés anual (TAE %)
+      interest_rate_placeholder: "2,75"
+      interest_enabled: Habilitar cálculo automático de intereses
     new:
       title: Introducir saldo de la cuenta
+    tabs:
+      overview:
+        interest_rate: Tasa de interés
+        apy: TAE
+        accrued_this_month: Devengado este mes
+        total_this_year: Total este año
+        edit_details: Editar detalles de la cuenta
+        unknown: Desconocido

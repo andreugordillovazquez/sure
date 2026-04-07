@@ -5,6 +5,7 @@ es:
       account: Cuenta de transferencia (opcional)
       account_prompt: Buscar cuenta
       amount: Importe
+      fee: Comisión de la operación
       holding: Símbolo del ticker
       holding_optional: Símbolo del ticker (opcional)
       price: Precio por acción
@@ -36,6 +37,7 @@ es:
       additional: Adicional
       amount_label: Importe
       buy: Compra
+      fee_label: Comisión de la operación
       category_label: Categoría
       cost_per_share_label: Costo por acción
       date_label: Fecha
