@@ -52,10 +52,10 @@ es:
       nature: Tipo
       none: "(ninguno)"
       personal_amount_label: Tu parte
-      personal_amount_mode: Modo
-      personal_amount_exact: Exacto
-      personal_amount_divide: Dividir entre
-      personal_amount_people: Personas
+      personal_amount_exact: Importe exacto
+      personal_amount_exact_label: Importe
+      personal_amount_divide: Dividir entre personas
+      personal_amount_people: Número de personas
       personal_amount_hint: "Total: %{total} · Tu parte: %{share} (%{percent}%%)"
       note_label: Notas
       note_placeholder: Introduce una nota

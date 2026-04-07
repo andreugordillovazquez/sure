@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="personal-amount"
 // Toggles between exact amount and divide-by-people modes for personal_amount
 export default class extends Controller {
-  static targets = ["modeSelect", "divideGroup", "peopleInput"]
+  static targets = ["modeSelect", "exactGroup", "divideGroup", "peopleInput"]
   static values = { total: Number }
 
   connect() {
@@ -17,9 +17,11 @@ export default class extends Controller {
   updateMode() {
     const mode = this.modeSelectTarget.value
     if (mode === "divide") {
+      this.exactGroupTarget.classList.add("hidden")
       this.divideGroupTarget.classList.remove("hidden")
       this.calculate()
     } else {
+      this.exactGroupTarget.classList.remove("hidden")
       this.divideGroupTarget.classList.add("hidden")
     }
   }
