@@ -77,38 +77,40 @@
                     disabled: @entry.linked? || split_locked || edit_locked,
                     disable_currency: @entry.linked? || split_locked || edit_locked %>
             </div>
-            <div data-controller="personal-amount" data-personal-amount-total-value="<%= @entry.amount.abs %>" class="space-y-2">
-              <div class="form-field">
-                <label class="form-field__label"><%= t(".personal_amount_type_label") %></label>
-                <select class="form-field__input"
-                        data-personal-amount-target="typeSelect"
-                        data-action="change->personal-amount#updateType"
-                        <%= "disabled" if split_locked || edit_locked %>>
-                  <option value="exact"><%= t(".personal_amount_type_exact") %></option>
-                  <option value="people"><%= t(".personal_amount_type_people") %></option>
-                </select>
-              </div>
-              <div data-personal-amount-target="exactGroup">
-                <%= f.money_field :personal_amount,
-                      label: t(".personal_amount_label"),
-                      auto_submit: true,
-                      min: 0,
-                      value: @entry.personal_amount&.abs,
-                      disabled: split_locked || edit_locked,
-                      hide_currency: true %>
-              </div>
-              <div class="hidden" data-personal-amount-target="peopleGroup">
-                <div class="form-field">
-                  <label class="form-field__label"><%= t(".personal_amount_people_label") %></label>
-                  <input type="number" min="2" max="100" value="2"
-                         class="form-field__input"
-                         data-personal-amount-target="peopleInput"
-                         data-action="input->personal-amount#calculate"
-                         <%= "disabled" if split_locked || edit_locked %>>
+            <div data-controller="personal-amount" data-personal-amount-total-value="<%= @entry.amount.abs %>">
+              <div class="flex items-start gap-2">
+                <div class="w-1/2 form-field">
+                  <label class="form-field__label"><%= t(".personal_amount_type_label") %></label>
+                  <select class="form-field__input"
+                          data-personal-amount-target="typeSelect"
+                          data-action="change->personal-amount#updateType"
+                          <%= "disabled" if split_locked || edit_locked %>>
+                    <option value="exact"><%= t(".personal_amount_type_exact") %></option>
+                    <option value="people"><%= t(".personal_amount_type_people") %></option>
+                  </select>
+                </div>
+                <div class="w-1/2" data-personal-amount-target="exactGroup">
+                  <%= f.money_field :personal_amount,
+                        label: t(".personal_amount_label"),
+                        auto_submit: true,
+                        min: 0,
+                        value: @entry.personal_amount&.abs,
+                        disabled: split_locked || edit_locked,
+                        hide_currency: true %>
+                </div>
+                <div class="w-1/2 hidden" data-personal-amount-target="peopleGroup">
+                  <div class="form-field">
+                    <label class="form-field__label"><%= t(".personal_amount_people_label") %></label>
+                    <input type="number" min="2" max="100" value="2"
+                           class="form-field__input"
+                           data-personal-amount-target="peopleInput"
+                           data-action="input->personal-amount#calculate"
+                           <%= "disabled" if split_locked || edit_locked %>>
+                  </div>
                 </div>
               </div>
               <% if @entry.personal_amount.present? %>
-                <p class="text-xs text-secondary">
+                <p class="text-xs text-secondary mt-1">
                   <% pct = (@entry.personal_amount.abs / @entry.amount.abs * 100).round(0) %>
                   <%= t(".personal_amount_hint",
                         total: format_money(@entry.amount_money.abs),
