@@ -436,7 +436,12 @@
               variant: "outline-destructive",
               href: hide_transaction_path(@entry.transaction),
               method: :post,
-              confirm: t(".hide_confirm"),
+              confirm: CustomConfirm.new(
+                title: t(".hide_title"),
+                body: t(".hide_description"),
+                btn_text: t(".hide_button"),
+                destructive: true
+              ),
               frame: "_top"
             ) %>
           </div>
