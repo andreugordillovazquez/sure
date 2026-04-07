@@ -93,6 +93,7 @@ class Family::AutoMerchantDetector
 
     def scope
       family.transactions.where(id: transaction_ids)
+                         .joins(:entry).merge(Entry.excluding_hidden)
                          .enrichable(:merchant_id)
                          .includes(:merchant, :entry)
     end
