@@ -11,8 +11,76 @@ class Provider::Openai::AutoCategorizer
   JSON_MODE_AUTO = "auto"
 
   # Threshold for auto mode: if more than this percentage returns null, retry with none mode
-  # This is a heuristic to detect when strict JSON mode is breaking the model's ability to reason
   AUTO_MODE_NULL_THRESHOLD = 0.5
+
+  # CUSTOM: Descriptions for each category to disambiguate similar ones.
+  # Keys must match exactly the category names in Sure.
+  CATEGORY_DESCRIPTIONS = {
+    "Ahorro e inversiones"   => "Transferencias a cuentas de ahorro o fondos de inversión propios",
+    "Intereses"              => "Intereses cobrados de cuentas remuneradas o depósitos bancarios",
+    "Aportaciones a inversiones" => "Compras de acciones, ETFs, fondos o crypto",
+    "Pagos de préstamos"     => "Cuotas de préstamos o hipotecas",
+    "Supermercado"           => "Compras en supermercados: Mercadona, Lidl, Carrefour, Dia, Alcampo, Consum, Bonpreu, Esclat",
+    "Comida y bebida"        => "Restaurantes, bares y locales donde se come o cena. NO supermercados, NO cafeterías",
+    "Café"                   => "Cafeterías, pastelerías y locales donde solo se toma café o desayuno",
+    "Transporte"             => "Transporte público: metro, bus, tren, Renfe, FGC, taxi, Uber, Cabify, Bolt",
+    "Gasolina"               => "Gasolineras: Repsol, BP, Cepsa, Galp, Shell, Petrocat",
+    "Aparcamiento"           => "Parkings, zonas azules, OTA, parquímetros",
+    "Compras"                => "Tiendas de ropa, electrónica, Amazon, Zara, H&M, El Corte Inglés, Shein, AliExpress",
+    "Ropa"                   => "Tiendas especializadas en ropa y calzado: Zara, Mango, Pull&Bear, Decathlon (ropa)",
+    "Entretenimiento"        => "Cine, conciertos, espectáculos, Netflix (si no es suscripción recurrente)",
+    "Suscripciones"          => "Pagos recurrentes mensuales/anuales: Netflix, Spotify, Amazon Prime, software, gimnasio",
+    "Deportes y fitness"     => "Gimnasios, equipamiento deportivo, actividades deportivas",
+    "Viajes"                 => "Vuelos, hoteles, Airbnb, alquiler de coches, actividades turísticas",
+    "Seguros"                => "Primas de seguro: coche, hogar, vida, salud",
+    "Salud"                  => "Farmacia, médico, dentista, óptica, clínicas",
+    "Cuidado personal"       => "Peluquería, barbería, spa, cosmética, perfumería",
+    "Transferencias"         => "Transferencias entre cuentas propias o envíos de dinero (Bizum, wire transfer)",
+    "Hipoteca / Alquiler"    => "Pago mensual de alquiler o hipoteca de vivienda",
+    "Mejora del hogar"       => "Bricolaje, muebles, electrodomésticos, fontanería, IKEA, Leroy Merlin",
+    "Utilidades"             => "Facturas de electricidad, gas, agua, internet, móvil",
+    "Servicios"              => "Servicios profesionales: gestoría, abogado, notaría, limpieza del hogar",
+    "Salario"                => "Nómina o ingreso de empresa empleadora",
+    "Comisiones"             => "Comisiones bancarias, gastos de mantenimiento de cuenta o tarjeta",
+    "Impuestos"              => "Pagos a la AEAT, Hacienda, ayuntamiento (IBI, IVTM), multas de tráfico",
+    "Regalos y donaciones"   => "Regalos a otras personas, donaciones a ONGs",
+    "Software y herramientas" => "Licencias de software, dominios, hosting, herramientas digitales profesionales",
+    "Supermercado"           => "Mercadona, Lidl, Carrefour, Dia, Alcampo, Consum, Bonpreu, Esclat"
+  }.freeze
+
+  # CUSTOM: Few-shot examples with real Spanish merchants to guide the model.
+  SPANISH_FEW_SHOT_EXAMPLES = [
+    { description: "MERCADONA 1234 GIRONA",        amount: 45.20,  classification: "expense", category: "Supermercado" },
+    { description: "LIDL SUPRA ESP 00032",          amount: 28.50,  classification: "expense", category: "Supermercado" },
+    { description: "REPSOL ES 00234 AUTOPISTA",     amount: 65.00,  classification: "expense", category: "Gasolina" },
+    { description: "BP ESTACION SERVICIO",          amount: 55.30,  classification: "expense", category: "Gasolina" },
+    { description: "NETFLIX.COM",                   amount: 15.99,  classification: "expense", category: "Suscripciones" },
+    { description: "SPOTIFY AB",                    amount: 9.99,   classification: "expense", category: "Suscripciones" },
+    { description: "AMAZON PRIME",                  amount: 4.99,   classification: "expense", category: "Suscripciones" },
+    { description: "AMAZON.ES MARKETPLACE",         amount: 32.00,  classification: "expense", category: "Compras" },
+    { description: "ZARA.COM ONLINE",               amount: 49.95,  classification: "expense", category: "Ropa" },
+    { description: "FARMACIA CENTRAL GIRONA",       amount: 12.40,  classification: "expense", category: "Salud" },
+    { description: "RENFE OPERADORA",               amount: 24.00,  classification: "expense", category: "Transporte" },
+    { description: "CABIFY SPAIN SL",               amount: 8.50,   classification: "expense", category: "Transporte" },
+    { description: "PARKING SABA ZONA FRANCA",      amount: 5.00,   classification: "expense", category: "Aparcamiento" },
+    { description: "IKEA BADALONA",                 amount: 120.00, classification: "expense", category: "Mejora del hogar" },
+    { description: "LEROY MERLIN",                  amount: 45.00,  classification: "expense", category: "Mejora del hogar" },
+    { description: "ENDESA ENERGIA",                amount: 78.00,  classification: "expense", category: "Utilidades" },
+    { description: "VODAFONE ESPANA SAU",           amount: 35.00,  classification: "expense", category: "Utilidades" },
+    { description: "DECATHLON GIRONA",              amount: 29.99,  classification: "expense", category: "Deportes y fitness" },
+    { description: "EL CORTE INGLES SA",            amount: 55.00,  classification: "expense", category: "Compras" },
+    { description: "COMPRA BIZUM 34612345678",      amount: 20.00,  classification: "expense", category: "Transferencias" },
+    { description: "NOMINA EMPRESA SL OCTUBRE",     amount: 2500.0, classification: "income",  category: "Salario" },
+    { description: "INTERESES CUENTA REMUNERADA",   amount: 1.23,   classification: "income",  category: "Intereses" },
+    { description: "CAFE BAR EL MERCAT",            amount: 3.50,   classification: "expense", category: "Café" },
+    { description: "RESTAURANTE LA BRASA GIRONA",   amount: 32.00,  classification: "expense", category: "Comida y bebida" },
+    { description: "GLOVO SPAIN",                   amount: 18.50,  classification: "expense", category: "Comida y bebida" },
+    { description: "JUST EAT SPAIN",               amount: 22.00,  classification: "expense", category: "Comida y bebida" },
+    { description: "MUTUA MADRILENA SEGUROS",       amount: 65.00,  classification: "expense", category: "Seguros" },
+    { description: "HACIENDA AEAT PAGO 100",        amount: 200.00, classification: "expense", category: "Impuestos" },
+    { description: "REVOLUT*CRYPTO PURCHASE",       amount: 50.00,  classification: "expense", category: "Aportaciones a inversiones" },
+    { description: "TRANSFERENCIA A CUENTA AHORRO", amount: 500.00, classification: "expense", category: "Ahorro e inversiones" }
+  ].freeze
 
   attr_reader :client, :model, :transactions, :user_categories, :custom_provider, :langfuse_trace, :family, :json_mode
 
@@ -29,26 +97,13 @@ class Provider::Openai::AutoCategorizer
 
   VALID_JSON_MODES = [ JSON_MODE_STRICT, JSON_MODE_OBJECT, JSON_MODE_NONE, JSON_MODE_AUTO ].freeze
 
-  # Determine default JSON mode based on configuration hierarchy:
-  # 1. Environment variable (LLM_JSON_MODE) - highest priority, for testing/override
-  # 2. Setting.openai_json_mode - user-configured in app settings
-  # 3. Default: auto mode (recommended for all providers)
-  #
-  # Mode descriptions:
-  # - "auto": Tries strict first, falls back to none if >50% fail (recommended default)
-  # - "strict": Best for thinking models (qwen-thinking, deepseek-reasoner) - skips verbose <think> tags
-  # - "none": Best for non-thinking models (gpt-oss, llama, mistral) - allows reasoning in output
-  # - "json_object": Middle ground, broader compatibility than strict
   def default_json_mode
-    # 1. Check environment variable first (allows runtime override for testing)
     env_mode = ENV["LLM_JSON_MODE"]
     return env_mode if env_mode.present? && VALID_JSON_MODES.include?(env_mode)
 
-    # 2. Check app settings (user-configured)
     setting_mode = Setting.openai_json_mode
     return setting_mode if setting_mode.present? && VALID_JSON_MODES.include?(setting_mode)
 
-    # 3. Default: auto mode for all providers (tries strict first, falls back to none if needed)
     JSON_MODE_AUTO
   end
 
@@ -68,32 +123,57 @@ class Provider::Openai::AutoCategorizer
     end
   end
 
-  # Simplified instructions for smaller/local LLMs
+  # CUSTOM: Enriched instructions for custom/OpenRouter providers.
+  # Adds Spanish context, category descriptions, few-shot examples, and
+  # disambiguation rules for categories that are commonly confused.
   def simple_instructions
+    categories_with_descriptions = user_categories.map do |c|
+      desc = CATEGORY_DESCRIPTIONS[c[:name]]
+      if desc
+        "- #{c[:name]}: #{desc}"
+      else
+        "- #{c[:name]}"
+      end
+    end.join("\n")
+
+    few_shot_lines = SPANISH_FEW_SHOT_EXAMPLES
+      .select { |ex| user_categories.any? { |c| c[:name] == ex[:category] } }
+      .map { |ex| "  \"#{ex[:description]}\" (#{ex[:classification]}, #{ex[:amount]}€) → #{ex[:category]}" }
+      .join("\n")
+
     <<~INSTRUCTIONS.strip_heredoc
-      Categorize transactions into the given categories. Return JSON only. Do not explain your reasoning.
+      You are a personal finance categorization assistant for a user based in Spain (Catalonia).
+      Transactions are in Spanish or Catalan. Merchant names follow Spanish bank formatting conventions.
+
+      AVAILABLE CATEGORIES (with descriptions to help you decide):
+      #{categories_with_descriptions}
+
+      EXAMPLES OF CORRECT CATEGORIZATIONS:
+      #{few_shot_lines}
 
       CRITICAL RULES:
-      1. Match transaction_id exactly from input
-      2. Use EXACT category_name from the provided list, or "null" if unsure
-      3. Match expense transactions to expense categories only
-      4. Match income transactions to income categories only
-      5. Return "null" if the description is generic/ambiguous (e.g., "POS DEBIT", "ACH WITHDRAWAL", "CHECK #1234")
-      6. Prefer MORE SPECIFIC subcategories over general parent categories when available
+      1. Match transaction_id exactly from the input — never invent IDs
+      2. Use the EXACT category name from the list above (case-sensitive)
+      3. Prefer the MOST SPECIFIC subcategory when you are confident
+      4. Return "null" if you are less than 60% confident — false negatives are better than false positives
+      5. Return "null" for generic/unrecognizable entries (e.g., "COMPRA TPV", "PAGO DOMICILIADO", "TRANSFERENCIA EMITIDA")
+      6. Expense transactions → expense categories; income transactions → income categories
 
-      CATEGORY HIERARCHY NOTES:
-      - Use "Restaurants" for sit-down restaurants, "Fast Food" for quick service chains
-      - Use "Coffee Shops" for coffee places, "Food & Drink" only when type is unclear
-      - Use "Shopping" for general retail, big-box stores, and online marketplaces
-      - Use "Groceries" for dedicated grocery stores ONLY
-      - For income: use "Salary" for payroll/employer deposits, "Income" for generic income sources
+      SPANISH-SPECIFIC DISAMBIGUATION:
+      - Supermercado vs Comida y bebida: supermarkets (Mercadona, Lidl…) → Supermercado; restaurants/bars → Comida y bebida
+      - Café vs Comida y bebida: coffee shops / breakfast spots → Café; full meals → Comida y bebida
+      - Compras vs Ropa: clothing-only stores → Ropa; general retail / Amazon → Compras
+      - Transferencias: Bizum payments and bank transfers between own accounts → Transferencias
+      - Suscripciones: recurring monthly/annual digital services → Suscripciones
+      - Gasolina: gas stations only → Gasolina; highway tolls → Transporte
+      - "CARGO CUOTA" or "MANTENIMIENTO CUENTA" → Comisiones
 
-      Output JSON format only (no markdown, no explanation):
+      Output ONLY valid JSON, no markdown, no explanation:
       {"categorizations": [{"transaction_id": "...", "category_name": "..."}]}
     INSTRUCTIONS
   end
 
-  # Detailed instructions for larger models like GPT-4
+  # Detailed instructions for larger models like GPT-4 (native OpenAI path)
   def detailed_instructions
     <<~INSTRUCTIONS.strip_heredoc
       You are an assistant to a consumer personal finance app.  You will be provided a list
@@ -166,8 +246,6 @@ class Provider::Openai::AutoCategorizer
         auto_categorize_with_mode(json_mode)
       end
     rescue Faraday::BadRequestError => e
-      # If strict mode fails (HTTP 400), fall back to none mode
-      # This handles providers that don't support json_schema response format
       if json_mode == JSON_MODE_STRICT || json_mode == JSON_MODE_AUTO
         Rails.logger.warn("Strict JSON mode failed, falling back to none mode: #{e.message}")
         auto_categorize_with_mode(JSON_MODE_NONE)
@@ -176,15 +254,6 @@ class Provider::Openai::AutoCategorizer
       end
     end
 
-    # Auto mode: try strict first, fall back to none if too many nulls or missing results
-    #
-    # This uses pure heuristics to detect when strict JSON mode is breaking the model's
-    # ability to reason. Models that can't reason well in strict mode often:
-    # 1. Return null for everything, OR
-    # 2. Simply omit transactions they can't categorize (returning fewer results than input)
-    #
-    # The heuristic is simple: if >50% of results are null or missing, the model likely
-    # needs the freedom to reason in its output (which strict mode prevents).
     def auto_categorize_with_auto_mode
       result = auto_categorize_with_mode(JSON_MODE_STRICT)
 
@@ -209,7 +278,6 @@ class Provider::Openai::AutoCategorizer
         json_mode: mode
       })
 
-      # Build parameters with configurable JSON response format
       params = {
         model: model.presence || Provider::Openai::DEFAULT_MODEL,
         messages: [
@@ -218,7 +286,6 @@ class Provider::Openai::AutoCategorizer
         ]
       }
 
-      # Add response format based on json_mode setting
       case mode
       when JSON_MODE_STRICT
         params[:response_format] = {
@@ -231,7 +298,6 @@ class Provider::Openai::AutoCategorizer
         }
       when JSON_MODE_OBJECT
         params[:response_format] = { type: "json_object" }
-        # JSON_MODE_NONE: no response_format constraint
       end
 
       response = client.chat(parameters: params)
@@ -271,7 +337,6 @@ class Provider::Openai::AutoCategorizer
     end
 
     def normalize_category_name(category_name)
-      # Convert to string to handle non-string LLM outputs (numbers, booleans, etc.)
       normalized = category_name.to_s.strip
       return nil if normalized.empty? || normalized == "null" || normalized.downcase == "null"
 
@@ -283,55 +348,60 @@ class Provider::Openai::AutoCategorizer
       case_insensitive_match = user_categories.find { |c| c[:name].to_s.downcase == normalized.downcase }
       return case_insensitive_match[:name] if case_insensitive_match
 
-      # Try partial/fuzzy match (for common variations)
+      # Try fuzzy match
       fuzzy_match = find_fuzzy_category_match(normalized)
       return fuzzy_match if fuzzy_match
 
-      # Return normalized string if no match found (will be treated as uncategorized)
       normalized
     end
 
-    # Find a fuzzy match for category names with common variations
     def find_fuzzy_category_match(category_name)
-      # Ensure string input for string operations
       input_str = category_name.to_s
-      normalized_input = input_str.downcase.gsub(/[^a-z0-9]/, "")
+      normalized_input = input_str.downcase.gsub(/[^a-z0-9áéíóúüñ]/, "")
 
       user_categories.each do |cat|
         cat_name_str = cat[:name].to_s
-        normalized_cat = cat_name_str.downcase.gsub(/[^a-z0-9]/, "")
+        normalized_cat = cat_name_str.downcase.gsub(/[^a-z0-9áéíóúüñ]/, "")
 
-        # Check if one contains the other
         return cat[:name] if normalized_input.include?(normalized_cat) || normalized_cat.include?(normalized_input)
-
-        # Check common abbreviations/variations
         return cat[:name] if fuzzy_name_match?(input_str, cat_name_str)
       end
 
       nil
     end
 
-    # Handle common naming variations
+    # CUSTOM: Spanish-aware fuzzy matching for common category name variations.
     def fuzzy_name_match?(input, category)
       variations = {
-        "gas" => [ "gas & fuel", "gas and fuel", "fuel", "gasoline" ],
-        "restaurants" => [ "restaurant", "dining", "food" ],
-        "groceries" => [ "grocery", "supermarket", "food store" ],
-        "streaming" => [ "streaming services", "streaming service" ],
-        "rideshare" => [ "ride share", "ride-share", "uber", "lyft" ],
-        "coffee" => [ "coffee shops", "coffee shop", "cafe" ],
-        "fast food" => [ "fastfood", "quick service" ],
-        "gym" => [ "gym & fitness", "fitness", "gym and fitness" ],
-        "flights" => [ "flight", "airline", "airlines", "airfare" ],
-        "hotels" => [ "hotel", "lodging", "accommodation" ]
+        # Spanish
+        "gasolina"              => [ "gas & fuel", "combustible", "carburante", "gasoil" ],
+        "supermercado"          => [ "supermercados", "grocery", "groceries", "alimentacion", "alimentación" ],
+        "comida y bebida"       => [ "restaurantes", "restaurants", "dining", "food & drink", "food and drink" ],
+        "café"                  => [ "cafe", "coffee", "coffee shops", "cafeteria", "cafetería" ],
+        "transporte"            => [ "transport", "transportation", "taxi", "rideshare" ],
+        "suscripciones"         => [ "subscriptions", "streaming", "streaming services" ],
+        "deportes y fitness"    => [ "gym", "fitness", "deporte", "gimnasio" ],
+        "viajes"                => [ "travel", "flights", "hotels", "vuelos", "hoteles" ],
+        "mejora del hogar"      => [ "home improvement", "hogar", "bricolaje" ],
+        "cuidado personal"      => [ "personal care", "belleza", "beauty" ],
+        "regalos y donaciones"  => [ "gifts", "donations", "donaciones", "regalos" ],
+        "utilidades"            => [ "utilities", "bills", "facturas" ],
+        "compras"               => [ "shopping", "retail", "tiendas" ],
+        "transferencias"        => [ "transfers", "bizum", "wire transfer" ],
+        "pagos de préstamos"    => [ "loan payment", "hipoteca", "prestamo", "préstamo" ],
+        "ahorro e inversiones"  => [ "savings", "investment", "investing", "ahorro" ],
+        "impuestos"             => [ "taxes", "tax", "hacienda", "aeat" ],
+        "comisiones"            => [ "fees", "bank fees", "commission", "cargo" ],
+        "salario"               => [ "salary", "payroll", "nomina", "nómina", "income" ],
+        "intereses"             => [ "interest", "interest income", "rendimientos" ]
       }
 
-      # Ensure string inputs for string operations
       input_lower = input.to_s.downcase
       category_lower = category.to_s.downcase
 
-      variations.each do |_key, synonyms|
-        if synonyms.include?(input_lower) && synonyms.include?(category_lower)
+      variations.each do |key, synonyms|
+        all = [ key ] + synonyms
+        if all.include?(input_lower) && all.include?(category_lower)
           return true
         end
       end
@@ -340,7 +410,6 @@ class Provider::Openai::AutoCategorizer
     end
 
     def extract_categorizations_native(response)
-      # Find the message output (not reasoning output)
       message_output = response["output"]&.find { |o| o["type"] == "message" }
       raw = message_output&.dig("content", 0, "text")
 
@@ -355,14 +424,12 @@ class Provider::Openai::AutoCategorizer
       raw = response.dig("choices", 0, "message", "content")
       parsed = parse_json_flexibly(raw)
 
-      # Handle different response formats from various LLMs
       categorizations = parsed.dig("categorizations") ||
                         parsed.dig("results") ||
                         (parsed.is_a?(Array) ? parsed : nil)
 
       raise Provider::Openai::Error, "Could not find categorizations in response" if categorizations.nil?
 
-      # Normalize field names (some LLMs use different naming)
       categorizations.map do |cat|
         {
           "transaction_id" => cat["transaction_id"] || cat["id"] || cat["txn_id"],
@@ -371,20 +438,13 @@ class Provider::Openai::AutoCategorizer
       end
     end
 
-    # Flexible JSON parsing that handles common LLM output issues
     def parse_json_flexibly(raw)
       return {} if raw.blank?
 
-      # Strip thinking model tags if present (e.g., <think>...</think>)
-      # The actual JSON output comes after the thinking block
       cleaned = strip_thinking_tags(raw)
 
-      # Try direct parse first
       JSON.parse(cleaned)
     rescue JSON::ParserError
-      # Try multiple extraction strategies in order of preference
-
-      # Strategy 1: Closed markdown code blocks (```json...```)
       if cleaned =~ /```(?:json)?\s*(\{[\s\S]*?\})\s*```/m
         matches = cleaned.scan(/```(?:json)?\s*(\{[\s\S]*?\})\s*```/m).flatten
         matches.reverse_each do |match|
@@ -396,17 +456,13 @@ class Provider::Openai::AutoCategorizer
         end
       end
 
-      # Strategy 2: Unclosed markdown code blocks (thinking models often forget to close)
-      # Pattern: ```json followed by JSON that goes to end of string
       if cleaned =~ /```(?:json)?\s*(\{[\s\S]*\})\s*$/m
         begin
           return JSON.parse($1)
         rescue JSON::ParserError
-          # Continue to next strategy
         end
       end
 
-      # Strategy 3: Find JSON object with "categorizations" key
       if cleaned =~ /(\{"categorizations"\s*:\s*\[[\s\S]*\]\s*\})/m
         matches = cleaned.scan(/(\{"categorizations"\s*:\s*\[[\s\S]*?\]\s*\})/m).flatten
         matches.reverse_each do |match|
@@ -416,39 +472,28 @@ class Provider::Openai::AutoCategorizer
             next
           end
         end
-        # Try greedy match if non-greedy failed
         begin
           return JSON.parse($1)
         rescue JSON::ParserError
-          # Continue to next strategy
         end
       end
 
-      # Strategy 4: Find any JSON object (last resort)
       if cleaned =~ /(\{[\s\S]*\})/m
         begin
           return JSON.parse($1)
         rescue JSON::ParserError
-          # Fall through to error
         end
       end
 
       raise Provider::Openai::Error, "Could not parse JSON from response: #{raw.truncate(200)}"
     end
 
-    # Strip thinking model tags (<think>...</think>) from response
-    # Some models like Qwen-thinking output reasoning in these tags before the actual response
     def strip_thinking_tags(raw)
-      # Remove <think>...</think> blocks but keep content after them
-      # If no closing tag, the model may have been cut off - try to extract JSON from inside
       if raw.include?("<think>")
-        # Check if there's content after the thinking block
         if raw =~ /<\/think>\s*([\s\S]*)/m
           after_thinking = $1.strip
           return after_thinking if after_thinking.present?
         end
-        # If no content after </think> or no closing tag, look inside the thinking block
-        # The JSON might be the last thing in the thinking block
         if raw =~ /<think>([\s\S]*)/m
           return $1
         end
@@ -503,39 +548,25 @@ class Provider::Openai::AutoCategorizer
       MESSAGE
     end
 
-    # Concise developer message optimized for smaller/local LLMs
-    # Uses pattern-based guidance instead of exhaustive examples
+    # CUSTOM: Concise message for generic/custom providers.
+    # Category list is already in the system prompt with descriptions,
+    # so here we just send the raw transactions.
     def developer_message_for_generic
       <<~MESSAGE.strip_heredoc
-        AVAILABLE CATEGORIES: #{user_categories.map { |c| c[:name] }.join(", ")}
+        Categorize the following transactions using the categories and rules from your instructions.
 
-        TRANSACTIONS TO CATEGORIZE:
+        TRANSACTIONS:
         #{format_transactions_simply}
 
-        CATEGORIZATION GUIDELINES:
-        - Prefer specific subcategories over general parent categories when confident
-        - Food delivery services should be categorized based on the underlying merchant type
-        - Square payments (SQ *) should be inferred from the merchant name after the prefix
-        - Warehouse/club stores should be categorized based on their primary purpose
-        - Return "null" for generic transactions (e.g., POS terminals, wire transfers, checks, ATM withdrawals)
-
-        IMPORTANT:
-        - Use EXACT category names from the list above
-        - Return "null" (as a string) if you cannot confidently match a category
-        - Match expense transactions only to expense categories
-        - Match income transactions only to income categories
-        - Do NOT include any explanation or reasoning - only output JSON
-
-        Respond with ONLY this JSON (no markdown code blocks, no other text):
+        Remember: output ONLY valid JSON, no markdown, no explanation:
         {"categorizations": [{"transaction_id": "...", "category_name": "..."}]}
       MESSAGE
     end
 
-    # Format transactions in a simpler, more readable way for smaller LLMs
     def format_transactions_simply
       transactions.map do |t|
         description = t[:description].presence || t[:merchant].presence || ""
-        "- ID: #{t[:id]}, Amount: #{t[:amount]}, Type: #{t[:classification]}, Description: \"#{description}\""
+        "- ID: #{t[:id]}, Amount: #{t[:amount]}€, Type: #{t[:classification]}, Description: \"#{description}\""
       end.join("\n")
     end
 end
